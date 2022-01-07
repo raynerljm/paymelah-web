@@ -6,6 +6,7 @@ import ManageItems from "../../../components/Steps/1-ManageItems";
 import UserCard from "../../../components/UserCard/UserCard";
 import UserCardAdd from "../../../components/UserCard/UserCardAdd";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
+import AllocateItem from "../../../components/Steps/3-AllocateItem";
 
 const Split: NextPage = () => {
   const {
@@ -121,6 +122,17 @@ const Split: NextPage = () => {
           nextStep={() => setStep(3)}
         />
       )}
+      {lineItems.map((item, index) => {
+        return (
+          <AllocateItem
+            key={item.id}
+            item={item}
+            show={step === index + 3}
+            incrementStep={() => setStep((step) => step + 1)}
+            decrementStep={() => setStep((step) => step - 1)}
+          />
+        );
+      })}
     </div>
   );
 };
