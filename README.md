@@ -1,4 +1,4 @@
-##PayMeLahBot
+## PayMeLahBot
 
 This Web App is created to be used with the Telegram Bot @PayMeLahBot for HackNRoll 2022
 
