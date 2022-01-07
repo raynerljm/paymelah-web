@@ -7,7 +7,8 @@ import NavBar from "../components/Navbar"
 import Landing from "../components/LandingPage"
 import Body from "../components/Body"
 import Border from "../components/Border"
-import Guide from "../components/Guide"
+import Features from "../components/Features"
+import AboutUs from "../components/AboutUs"
 const Home: NextPage = () => {
   return (
     <>
@@ -16,7 +17,9 @@ const Home: NextPage = () => {
     <NavBar/>
     <Border>
     <Landing/>
-    <Guide/>
+    <Features/>
+    <AboutUs/>
+
       </Border>
     </Body>
     </>

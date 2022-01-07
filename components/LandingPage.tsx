@@ -40,9 +40,11 @@ const Landing: FC = ({ children }) => {
             </div>
           </Fade>
             </span>
-            
           </h1>
         </div>
+      </div>
+      <div className="space">
+          <p>""</p>
       </div>
     </div>
   );

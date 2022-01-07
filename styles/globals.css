@@ -10,10 +10,15 @@
     background-size: cover;
   }
 
-  .space { margin-top: 120px; }
+  .space {
+    margin-top: 150px;
+  }
 
-}
-
-.icon {
+  .icon {
     @apply text-white text-4xl cursor-pointer;
   }
+
+  .subtext {
+      font-size: 18px;
+  }
+}
