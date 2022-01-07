@@ -8,6 +8,8 @@ import UserCardAdd from "../../../components/UserCard/UserCardAdd";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
 import Error from "../../../components/Steps/0-Error";
+import Summary from "../../../components/Steps/4-Summary";
+import Number from "../../../components/Steps/5-Number";
 
 const Split: NextPage = () => {
   const {
@@ -144,6 +146,14 @@ const Split: NextPage = () => {
     setUsers(newUsers);
   };
 
+  const confirmSplit = (
+    users: User[],
+    phoneNumber: string,
+    acceptedMethods: string[]
+  ) => {
+    console.log(users, phoneNumber, acceptedMethods);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <Error />;
 
@@ -185,6 +195,14 @@ const Split: NextPage = () => {
           />
         );
       })}
+      {step === 3 + lineItems.length && (
+        <Summary
+          lineItems={lineItems}
+          users={users}
+          decrementStep={() => setStep((step) => step - 1)}
+          confirmSplit={confirmSplit}
+        />
+      )}
     </div>
   );
 };
