@@ -11,7 +11,6 @@ const Navbar: FC = () => {
     { title: "Home", href: "#home" },
     { title: "Features", href: "#features" },
     { title: "Telebot", href: "#telebot" },
-    { title: "Platform", href: "#platform" },
     { title: "About Us", href: "#aboutUs" },
   ];
 

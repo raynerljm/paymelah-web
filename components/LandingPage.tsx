@@ -9,7 +9,7 @@ const Landing: FC = ({ children }) => {
       <div className="grid md:grid-cols-2 h-4/5">
         <div className="flex items-center justify-center h-full">
           <div className="transform hover:scale-110 hover:-translate-y-16 transition-all">
-            <Fade direction="left">
+            <Fade direction="left" delay={500}>
               {/* MOBILE */}
               <div className="sm:hidden mb-10">
                 <Image
@@ -35,13 +35,15 @@ const Landing: FC = ({ children }) => {
         </div>
         <div className="flex justify-center items-center h-full">
           <h1 className="text-white text-3xl font-semibold text-center md:text-left">
-            <span className="font-semibold w-full">
-              Bill splitting made easy.
-            </span>
-            <br />
-            <p className="text-white text-lg font-light mt-6">
-              Fast and hassle-free payment collection from your friends
-            </p>
+            <Fade direction="down" delay={500}>
+              <span className="font-semibold w-full">
+                Bill splitting made easy.
+              </span>
+              <br />
+              <p className="text-white text-lg font-light mt-6">
+                Fast and hassle-free payment collection from your friends
+              </p>
+            </Fade>
             <br />
             <span>
               <Fade direction="up" delay={500}>

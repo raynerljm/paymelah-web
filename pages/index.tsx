@@ -8,7 +8,9 @@ import Landing from "../components/LandingPage";
 import Body from "../components/Layout/Body";
 import Border from "../components/Layout/Border";
 import Features from "../components/Features";
+import Telebot from "../components/Telebot";
 import AboutUs from "../components/AboutUs";
+import TextInput from "../components/Forms/TextInput";
 const Home: NextPage = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const Home: NextPage = () => {
         <Border>
           <Landing />
           <Features />
+          <Telebot />
           <AboutUs />
         </Border>
       </Body>
