@@ -74,36 +74,7 @@ const Navbar: FC<Props> = ({ location }) => {
       <div
         className={`${location === "home" ? "hidden" : ""} sm:block ml-auto`}
       >
-        <FaTimes
-          className="text-white text-2xl absolute top-6 right-6 "
-          onClick={() => setSidebarOpen(false)}
-        />
-        {navItems.map((item) => {
-          return (
-            <NavItem
-              key={item.title}
-              title={item.title}
-              href={item.href}
-              closeSidebar={() => setSidebarOpen(false)}
-            />
-          );
-        })}
-      </div>
-      {/* DESKTOP */}
-      <div className="hidden sm:flex flex-grow max-w-3xl justify-evenly">
-        {navItems.map((item) => {
-          return (
-            <NavItem key={item.title} title={item.title} href={item.href} />
-          );
-        })}
-      </div>
-      <div className="hidden sm:block ml-auto">
-      <a
-                  href="https://github.com/raynerljm/paymelah-web"
-                  target="blank"
-                  rel="noreferrer"
-                >
-
+        <a href="https://github.com/raynerljm/paymelah-web">
           <BsGithub className="icon" />
         </a>
       </div>
