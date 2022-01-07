@@ -10,6 +10,7 @@ const emptyData = {
       descClean: "Loading...",
       lineTotal: 0,
       newAddition: false,
+      sharers: 0,
     },
   ],
   chatId: "dummyChatId",
@@ -59,6 +60,7 @@ const useUrlData = () => {
     if (!router) return;
     const dummyQuery = btoa(JSON.stringify(dummyData));
     const decodedString = window.atob(dummyQuery as string);
+    // const decodedString = window.atob(router.query.code as string);
     let decodedJson;
     try {
       decodedJson = JSON.parse(decodedString);
@@ -74,6 +76,7 @@ const useUrlData = () => {
           id: processedLineItems.length,
           lineTotal: item.lineTotal,
           newAddition: false,
+          sharers: 0,
         });
       }
     });

@@ -4,6 +4,7 @@ export type LineItem = {
   descClean: string;
   lineTotal: number;
   newAddition?: boolean;
+  sharers: number;
 };
 
 export type User = {

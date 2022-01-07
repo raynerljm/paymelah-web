@@ -9,6 +9,8 @@ type Props = {
   number: number;
   addItemToUser: (userId: number, item: LineItem) => void;
   removeItemFromUser: (userId: number, itemId: number) => void;
+  changeLineItemSharers: (id: number, action: "+" | "-") => void;
+  updateSharedItemValue: (id: number) => void;
   incrementStep: () => void;
   decrementStep: () => void;
 };
@@ -20,6 +22,8 @@ const AllocateItem: FC<Props> = ({
   number,
   addItemToUser,
   removeItemFromUser,
+  changeLineItemSharers,
+  updateSharedItemValue,
   incrementStep,
   decrementStep,
 }) => {
@@ -28,13 +32,15 @@ const AllocateItem: FC<Props> = ({
       {show && (
         <div>
           <h1 className="text-white text-xl">
-            {number}. {item.descClean}
+            {number}. {item.descClean} ({item.lineTotal}) ({item.sharers})
           </h1>
           <UserSelect
             users={users}
             currentItem={item}
             addItemToUser={addItemToUser}
             removeItemFromUser={removeItemFromUser}
+            changeLineItemSharers={changeLineItemSharers}
+            updateSharedItemValue={updateSharedItemValue}
           />
 
           <div className="flex">

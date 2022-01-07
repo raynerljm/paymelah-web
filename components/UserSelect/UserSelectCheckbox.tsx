@@ -7,6 +7,8 @@ type Props = {
   hasItem: boolean;
   addItemToUser: (userId: number, item: LineItem) => void;
   removeItemFromUser: (userId: number, itemId: number) => void;
+  changeLineItemSharers: (id: number, action: "+" | "-") => void;
+  updateSharedItemValue: (id: number) => void;
 };
 
 const UserSelectCheckbox: FC<Props> = ({
@@ -15,7 +17,11 @@ const UserSelectCheckbox: FC<Props> = ({
   hasItem,
   addItemToUser,
   removeItemFromUser,
+  changeLineItemSharers,
+  updateSharedItemValue,
 }) => {
+  const usersItem = user.items.filter((a) => a.id === item.id)[0];
+
   return (
     <>
       <div
@@ -23,12 +29,16 @@ const UserSelectCheckbox: FC<Props> = ({
         onClick={() => {
           if (hasItem) {
             removeItemFromUser(user.id, item.id);
+            changeLineItemSharers(item.id, "-");
+            updateSharedItemValue(item.id);
           } else {
             addItemToUser(user.id, item);
+            changeLineItemSharers(item.id, "+");
+            updateSharedItemValue(item.id);
           }
         }}
       >
-        {user.name}
+        {user.name} {hasItem && usersItem.lineTotal.toFixed(2)}
       </div>
     </>
   );

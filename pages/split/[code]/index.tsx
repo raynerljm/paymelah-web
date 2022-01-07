@@ -39,14 +39,8 @@ const Split: NextPage = () => {
     if (id === -1) return;
     const newLineItems = lineItems.map((item) => {
       if (item.id === id) {
-        const newItem = {
-          id,
-          descClean: newDesc,
-          lineTotal: newPrice,
-          qty: 1,
-          newAddition: false,
-        };
-        return newItem;
+        item.descClean = newDesc;
+        item.lineTotal = newPrice;
       }
       return item;
     });
@@ -61,9 +55,42 @@ const Split: NextPage = () => {
       lineTotal: 0,
       qty: 1,
       newAddition: true,
+      sharers: 0,
     };
     const newLineItems = [...lineItems, newItem];
     setLineItems(newLineItems);
+  };
+
+  const changeLineItemSharers = (id: number, action: "+" | "-") => {
+    const newItems = lineItems.map((item) => {
+      if (item.id === id) {
+        if (action === "+") {
+          item.sharers++;
+        } else if (action === "-") {
+          item.sharers--;
+        }
+      }
+      return item;
+    });
+    setLineItems(newItems);
+  };
+
+  const updateSharedItemValue = (id: number) => {
+    const sharedItem = lineItems.filter((item) => item.id === id)[0];
+    const sharers = sharedItem.sharers;
+    const originalPrice = sharedItem.lineTotal;
+    const sharedPrice = originalPrice / sharers;
+    const newUsers: User[] = users.map((user) => {
+      user.items = user.items.map((item) => {
+        if (item.id === id) {
+          item.lineTotal = sharedPrice;
+        }
+        return item;
+      });
+      return user;
+    });
+    console.log(newUsers);
+    setUsers(newUsers);
   };
 
   const deleteUser = (id: number) => {
@@ -78,13 +105,7 @@ const Split: NextPage = () => {
     if (id === -1) return;
     const newUsers = users.map((user) => {
       if (user.id === id) {
-        const newUser: User = {
-          id,
-          name: newName,
-          newAddition: false,
-          items: [],
-        };
-        return newUser;
+        user.name = newName;
       }
       return user;
     });
@@ -106,12 +127,9 @@ const Split: NextPage = () => {
   const addItemToUser = (userId: number, item: LineItem) => {
     const newUsers = users.map((user) => {
       if (user.id === userId) {
-        const newUser = { ...user };
-        newUser.items.push(item);
-        return newUser;
-      } else {
-        return user;
+        user.items.push({ ...item });
       }
+      return user;
     });
     setUsers(newUsers);
   };
@@ -119,13 +137,9 @@ const Split: NextPage = () => {
   const removeItemFromUser = (userId: number, itemId: number) => {
     const newUsers = users.map((user) => {
       if (user.id === userId) {
-        const newUser = { ...user };
-        const newItems = newUser.items.filter((item) => item.id !== itemId);
-        newUser.items = newItems;
-        return newUser;
-      } else {
-        return user;
+        user.items = user.items.filter((item) => item.id !== itemId);
       }
+      return user;
     });
     setUsers(newUsers);
   };
@@ -161,6 +175,8 @@ const Split: NextPage = () => {
             number={index + 1}
             addItemToUser={addItemToUser}
             removeItemFromUser={removeItemFromUser}
+            changeLineItemSharers={changeLineItemSharers}
+            updateSharedItemValue={updateSharedItemValue}
             incrementStep={() => setStep((step) => step + 1)}
             decrementStep={() => setStep((step) => step - 1)}
           />
