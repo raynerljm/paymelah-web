@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { LineItem } from "../../types";
 import { FaTimes } from "react-icons/fa";
 import TextInput from "../Forms/TextInput";
-import Card from "../Card";
+import Card from "../Forms/Card";
 
 type Props = {
   item: LineItem;

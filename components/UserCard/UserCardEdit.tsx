@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import Card from "../Card";
+import Card from "../Forms/Card";
 import TextInput from "../Forms/TextInput";
 import { FaTimes } from "react-icons/fa";
 import { User } from "../../types";

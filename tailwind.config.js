@@ -1,3 +1,5 @@
+const { callbackify } = require("util");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -5,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        "h-almost": "calc(100vh - 84px)",
+      },
       colors: {
         dark: {
           DEFAULT: "#000918",
