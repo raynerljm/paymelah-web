@@ -30,8 +30,8 @@ const UserSelectCheckbox: FC<Props> = ({
     <>
       <div
         className={`${
-          hasItem ? "bg-slate-200 shadow-inner" : "bg-white"
-        } py-3 px-5 text-xl flex items-center transition-all`}
+          hasItem ? "bg-slate-200 shadow-inner" : "bg-white hover:bg-gray-100"
+        } py-3 px-5 text-xl flex items-center transition-all cursor-pointer`}
         onClick={() => {
           if (hasItem) {
             removeItemFromUser(user.id, item.id);
@@ -47,7 +47,7 @@ const UserSelectCheckbox: FC<Props> = ({
         <div>
           <span className="font-bold">{user.name}</span>
           <br />
-          Total: ${totalAccumulated(user)}
+          Total: SGD {totalAccumulated(user)}
         </div>
         <FaCheck
           className={`ml-auto text-2xl text-green-600 transition-all ${

@@ -25,7 +25,7 @@ const UserCard: FC<Props> = ({ user, close, updateUser }) => {
               updateUser(user.id !== undefined ? user.id : -1, newUsername);
               close();
             }}
-            className="text-green-700"
+            className="text-green-700 cursor-pointer hover:scale-110 transition-all"
           />
         </span>
       </Card>

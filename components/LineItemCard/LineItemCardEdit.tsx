@@ -33,7 +33,7 @@ const LineItemCardEdit: FC<Props> = ({ item, close, updateLineItem }) => {
               );
               close();
             }}
-            className="text-green-700"
+            className="text-green-700 cursor-pointer hover:scale-110 transition-all"
           />
         </span>
       </Card>

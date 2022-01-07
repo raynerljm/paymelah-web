@@ -28,10 +28,13 @@ const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
         {formatter.format(item.lineTotal)}
       </span>
       <span className="ml-auto flex gap-4">
-        <FaEdit onClick={() => setEditMode(true)} />
+        <FaEdit
+          onClick={() => setEditMode(true)}
+          className="cursor-pointer hover:scale-110 transition-all"
+        />
         <FaTrashAlt
           onClick={() => deleteLineItem(item.id !== undefined ? item.id : -1)}
-          className="text-red-600"
+          className="text-red-600 cursor-pointer hover:scale-110 transition-all"
         />
       </span>
     </Card>

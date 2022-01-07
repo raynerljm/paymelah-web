@@ -27,13 +27,7 @@ body {
   }
 
   .bg-gradient {
-    background: rgb(251, 246, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(251, 246, 255, 1) 0%,
-      rgba(255, 82, 82, 1) 90%
-    );
-    @apply shadow;
+    @apply shadow transition-all bg-opacity-70;
   }
 
   .icon {
