@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
+import LineItemCard from "../../../components/LineItemCard";
 import useUrlData from "../../../hooks/useUrlData";
 import { LineItem } from "../../../types";
 
@@ -22,11 +23,13 @@ const Split: NextPage = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>Please review your items</h1>
-      {lineItems.map((item) => {
-        return <div key={item.descClean}>{item.descClean}</div>;
-      })}
+    <div className="min-h-screen w-full bg-dark">
+      <h1 className="text-xl text-white">Please review your items</h1>
+      <div className="flex flex-col gap-2">
+        {lineItems.map((item) => {
+          return <LineItemCard key={item.descClean} item={item} />;
+        })}
+      </div>
     </div>
   );
 };
