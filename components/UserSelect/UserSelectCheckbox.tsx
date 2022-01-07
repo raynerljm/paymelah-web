@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
+import { FaCheck } from "react-icons/fa";
 import { User, LineItem } from "../../types";
 
 type Props = {
@@ -22,10 +23,15 @@ const UserSelectCheckbox: FC<Props> = ({
 }) => {
   const usersItem = user.items.filter((a) => a.id === item.id)[0];
 
+  const totalAccumulated = (user: User) =>
+    user.items.reduce((acc, item) => acc + item.lineTotal, 0).toFixed(2);
+
   return (
     <>
       <div
-        className={`${hasItem ? "bg-green-200" : "bg-red-200"} py-2 px-4`}
+        className={`${
+          hasItem ? "bg-slate-200 shadow-inner" : "bg-white"
+        } py-3 px-5 text-xl flex items-center transition-all`}
         onClick={() => {
           if (hasItem) {
             removeItemFromUser(user.id, item.id);
@@ -38,7 +44,16 @@ const UserSelectCheckbox: FC<Props> = ({
           }
         }}
       >
-        {user.name} {hasItem && usersItem.lineTotal.toFixed(2)}
+        <div>
+          <span className="font-bold">{user.name}</span>
+          <br />
+          Total: ${totalAccumulated(user)}
+        </div>
+        <FaCheck
+          className={`ml-auto text-2xl text-green-600 transition-all ${
+            hasItem ? "" : "hidden"
+          }`}
+        />
       </div>
     </>
   );
