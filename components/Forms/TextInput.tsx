@@ -12,6 +12,7 @@ const TextInput: FC<Props> = ({ value, update }) => {
         value={value}
         type="text"
         onChange={(e) => update(e.target.value)}
+        className="w-full rounded-lg py-[2px] font-bold text-lg"
       />
     </>
   );

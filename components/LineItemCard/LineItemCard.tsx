@@ -21,7 +21,7 @@ const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
   const [editMode, setEditMode] = useState(item.newAddition || false);
 
   const NormalState = () => (
-    <Card>
+    <Card location="item">
       <span>
         {item.descClean}
         <br />
@@ -31,6 +31,7 @@ const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
         <FaEdit onClick={() => setEditMode(true)} />
         <FaTrashAlt
           onClick={() => deleteLineItem(item.id !== undefined ? item.id : -1)}
+          className="text-red-600"
         />
       </span>
     </Card>

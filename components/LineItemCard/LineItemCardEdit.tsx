@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { LineItem } from "../../types";
-import { FaTimes } from "react-icons/fa";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import TextInput from "../Forms/TextInput";
 import Card from "../Forms/Card";
 
@@ -16,16 +16,15 @@ const LineItemCardEdit: FC<Props> = ({ item, close, updateLineItem }) => {
 
   return (
     <>
-      <Card>
-        {" "}
+      <Card location="item">
         <span>
           <TextInput value={newDesc} update={setNewDesc} />
-          <br />
-          SGD
-          <TextInput value={newPrice} update={setNewPrice} />
+          <span className="flex items-center gap-1 mt-2">
+            SGD <TextInput value={newPrice} update={setNewPrice} />
+          </span>
         </span>
         <span className="ml-auto">
-          <FaTimes
+          <FaCheck
             onClick={() => {
               updateLineItem(
                 item.id !== undefined ? item.id : -1,
@@ -34,6 +33,7 @@ const LineItemCardEdit: FC<Props> = ({ item, close, updateLineItem }) => {
               );
               close();
             }}
+            className="text-green-700"
           />
         </span>
       </Card>
