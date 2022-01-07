@@ -1,15 +1,14 @@
 import { FC, useState } from "react";
 import { User } from "../../types";
-import AnimatedNumbers from "react-animated-numbers";
 
 type Props = {
   user: User;
 };
 
 const UserSummary: FC<Props> = ({ user }) => {
-  const sumOfItems = Number(
-    user.items.reduce((acc, item) => acc + item.lineTotal, 0).toFixed(2)
-  );
+  const sumOfItems = user.items
+    .reduce((acc, item) => acc + item.lineTotal, 0)
+    .toFixed(2);
 
   return (
     <>
@@ -17,7 +16,7 @@ const UserSummary: FC<Props> = ({ user }) => {
         <div className="flex font-bold mb-2 px-4 pt-2">
           <span className="uppercase">@{user.name}</span>
           <span className="ml-auto flex items-center gap-1">
-            SGD <AnimatedNumbers animateToNumber={sumOfItems} />
+            SGD {sumOfItems}
           </span>
         </div>
         {user.items.length > 0 && (
