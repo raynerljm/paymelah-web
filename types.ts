@@ -1,5 +1,6 @@
 export type LineItem = {
   qty: number;
+  id?: number;
   descClean: string;
   lineTotal: number;
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import type { URLData } from "../types";
+import type { LineItem, URLData } from "../types";
 
 const emptyData = {
   lineItems: [
@@ -56,7 +56,21 @@ const useUrlData = () => {
     } catch (error) {
       decodedJson = "Invalid JSON file";
     }
-    setData(decodedJson);
+    const processedLineItems: LineItem[] = [];
+    decodedJson.lineItems.forEach((item: LineItem) => {
+      for (let i = 0; i < item.qty; i++) {
+        processedLineItems.push({
+          descClean: item.descClean,
+          qty: 1,
+          id: processedLineItems.length,
+          lineTotal: item.lineTotal,
+        });
+      }
+    });
+    const processedJson = { ...decodedJson };
+    processedJson.lineItems = processedLineItems;
+
+    setData(processedJson);
     setLoading(false);
   }, [router]);
 

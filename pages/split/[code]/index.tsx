@@ -27,7 +27,7 @@ const Split: NextPage = () => {
       <h1 className="text-xl text-white">Please review your items</h1>
       <div className="flex flex-col gap-2">
         {lineItems.map((item) => {
-          return <LineItemCard key={item.descClean} item={item} />;
+          return <LineItemCard key={item.id} item={item} />;
         })}
       </div>
     </div>
