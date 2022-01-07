@@ -28,7 +28,7 @@ const Features: FC = ({ children }) => {
               details and generate the list of the priced items.
             </span>
 
-            <div className="mt-8 transform hover:scale-110 hover:-translate-y-16 transition-all flex justify-center ml-8">
+            <div className="mt-8 transform hover:scale-110 hover:-translate-y-16 transition-all flex justify-center">
               <br />
               <Fade direction="up">
                 <Image
