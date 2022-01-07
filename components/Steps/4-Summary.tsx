@@ -5,6 +5,7 @@ import Checkbox from "../Forms/Checkbox";
 import UserSummary from "../UserSummary/UserSummary";
 import TextInput from "../Forms/TextInput";
 import Button from "../Forms/Button";
+import FeedbackBox from "../Forms/FeedbackBox";
 const cloneDeep = require("lodash.clonedeep");
 
 type Props = {
@@ -59,11 +60,10 @@ const Summary: FC<Props> = ({
   return (
     <>
       <div className="text-xl text-white">Summary Page</div>
-      {unsharedItems && (
-        <div className="bg-red-200">
-          Note: You still have items that you have not split between users
-        </div>
-      )}
+      <FeedbackBox
+        show={unsharedItems}
+        message="Note: You still have items that were not split between anyone"
+      />
       <div className="flex flex-col gap-2">
         {summaryUserData.map((user) => {
           return <UserSummary key={user.id} user={user} />;
