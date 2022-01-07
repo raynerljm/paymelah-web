@@ -1,15 +1,15 @@
 import { Dispatch, FC, SetStateAction } from "react";
 
 type Props = {
-  initial: string;
+  value: string;
   update: Dispatch<SetStateAction<string>>;
 };
 
-const TextInput: FC<Props> = ({ initial, update }) => {
+const TextInput: FC<Props> = ({ value, update }) => {
   return (
     <>
       <input
-        value={initial}
+        value={value}
         type="text"
         onChange={(e) => update(e.target.value)}
       />

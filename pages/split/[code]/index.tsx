@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
-import LineItemCard from "../../../components/LineItemCard";
-import LineItemCardAdd from "../../../components/LineItemCardAdd";
 import useUrlData from "../../../hooks/useUrlData";
-import { LineItem } from "../../../types";
+import { LineItem, User } from "../../../types";
+import ManageItems from "../../../components/Steps/1-ManageItems";
+import UserCard from "../../../components/UserCard/UserCard";
+import UserCardAdd from "../../../components/UserCard/UserCardAdd";
+import ManageUsers from "../../../components/Steps/2-ManageUsers";
+import AllocateItem from "../../../components/Steps/3-AllocateItem";
 
 const Split: NextPage = () => {
   const {
@@ -13,7 +16,8 @@ const Split: NextPage = () => {
     users: initialUsers,
   } = useUrlData();
   const [lineItems, setLineItems] = useState<LineItem[]>(initialLineItems);
-  const [users, setUsers] = useState<string[]>(initialUsers);
+  const [users, setUsers] = useState<User[]>(initialUsers);
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     if (loading) return;
@@ -35,8 +39,6 @@ const Split: NextPage = () => {
     if (id === -1) return;
     const newLineItems = lineItems.map((item) => {
       if (item.id === id) {
-        item.descClean = newDesc;
-        item.lineTotal = newPrice;
         const newItem = {
           id,
           descClean: newDesc,
@@ -55,7 +57,7 @@ const Split: NextPage = () => {
     const previousMaxId = Math.max(...lineItems.map((item) => item.id || 0));
     const newItem: LineItem = {
       id: previousMaxId + 1,
-      descClean: "New Item",
+      descClean: `new_item_${lineItems.length + 1}`,
       lineTotal: 0,
       qty: 1,
       newAddition: true,
@@ -64,22 +66,73 @@ const Split: NextPage = () => {
     setLineItems(newLineItems);
   };
 
+  const deleteUser = (id: number) => {
+    if (id === -1) return;
+    const newUsers = users.filter((user) => {
+      return user.id !== id;
+    });
+    setUsers(newUsers);
+  };
+
+  const updateUser = (id: number, newName: string) => {
+    if (id === -1) return;
+    const newUsers = users.map((user) => {
+      if (user.id === id) {
+        const newUser: User = {
+          id,
+          name: newName,
+          newAddition: false,
+        };
+        return newUser;
+      }
+      return user;
+    });
+    setUsers(newUsers);
+  };
+
+  const addUser = () => {
+    const previousMaxId = Math.max(...users.map((item) => item.id || 0));
+    const newUser: User = {
+      id: previousMaxId + 1,
+      name: `user_${users.length + 1}`,
+      newAddition: true,
+    };
+    const newUsers = [...users, newUser];
+    setUsers(newUsers);
+  };
+
   return (
     <div className="min-h-screen w-full bg-dark">
-      <h1 className="text-xl text-white">Please review your items</h1>
-      <div className="flex flex-col gap-2">
-        {lineItems.map((item) => {
-          return (
-            <LineItemCard
-              key={item.id}
-              item={item}
-              updateLineItem={updateLineItem}
-              deleteLineItem={deleteLineItem}
-            />
-          );
-        })}
-        <LineItemCardAdd addLineItem={addLineItem} />
-      </div>
+      {step === 1 && (
+        <ManageItems
+          lineItems={lineItems}
+          updateLineItem={updateLineItem}
+          deleteLineItem={deleteLineItem}
+          addLineItem={addLineItem}
+          nextStep={() => setStep(2)}
+        />
+      )}
+      {step === 2 && (
+        <ManageUsers
+          users={users}
+          updateUser={updateUser}
+          deleteUser={deleteUser}
+          addUser={addUser}
+          previousStep={() => setStep(1)}
+          nextStep={() => setStep(3)}
+        />
+      )}
+      {lineItems.map((item, index) => {
+        return (
+          <AllocateItem
+            key={item.id}
+            item={item}
+            show={step === index + 3}
+            incrementStep={() => setStep((step) => step + 1)}
+            decrementStep={() => setStep((step) => step - 1)}
+          />
+        );
+      })}
     </div>
   );
 };

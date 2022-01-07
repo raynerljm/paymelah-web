@@ -1,7 +1,8 @@
 import { FC, useState } from "react";
-import { LineItem } from "../types";
+import { LineItem } from "../../types";
 import { FaTimes } from "react-icons/fa";
-import TextInput from "./Forms/TextInput";
+import TextInput from "../Forms/TextInput";
+import Card from "../Card";
 
 type Props = {
   item: LineItem;
@@ -15,12 +16,13 @@ const LineItemCardEdit: FC<Props> = ({ item, close, updateLineItem }) => {
 
   return (
     <>
-      <div className="bg-slate-300 py-2 px-4 text-xl rounded-lg flex items-center gap-2">
+      <Card>
+        {" "}
         <span>
-          <TextInput initial={newDesc} update={setNewDesc} />
+          <TextInput value={newDesc} update={setNewDesc} />
           <br />
           SGD
-          <TextInput initial={newPrice} update={setNewPrice} />
+          <TextInput value={newPrice} update={setNewPrice} />
         </span>
         <span className="ml-auto">
           <FaTimes
@@ -34,7 +36,7 @@ const LineItemCardEdit: FC<Props> = ({ item, close, updateLineItem }) => {
             }}
           />
         </span>
-      </div>
+      </Card>
     </>
   );
 };
