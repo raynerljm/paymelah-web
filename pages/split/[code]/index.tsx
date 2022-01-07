@@ -7,6 +7,7 @@ import UserCard from "../../../components/UserCard/UserCard";
 import UserCardAdd from "../../../components/UserCard/UserCardAdd";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
+import Error from "../../../components/Steps/0-Error";
 
 const Split: NextPage = () => {
   const {
@@ -14,18 +15,17 @@ const Split: NextPage = () => {
     lineItems: initialLineItems,
     chatId,
     users: initialUsers,
+    error,
   } = useUrlData();
   const [lineItems, setLineItems] = useState<LineItem[]>(initialLineItems);
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [step, setStep] = useState(1);
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || error) return;
     setLineItems(initialLineItems);
     setUsers(initialUsers);
   }, [initialLineItems, initialUsers, loading]);
-
-  if (loading) return <div>Loading...</div>;
 
   const deleteLineItem = (id: number) => {
     if (id === -1) return;
@@ -143,6 +143,9 @@ const Split: NextPage = () => {
     });
     setUsers(newUsers);
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <Error />;
 
   return (
     <div className="min-h-screen w-full bg-dark">

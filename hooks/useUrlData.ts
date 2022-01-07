@@ -55,46 +55,48 @@ const useUrlData = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<URLData>(emptyData);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!router || !router.query.code) return;
     // const dummyQuery = btoa(JSON.stringify(dummyData));
     // const decodedString = window.atob(dummyQuery as string);
-    const decodedString = window.atob(router.query.code as string);
-    console.log(decodedString);
-    let decodedJson;
+
     try {
-      decodedJson = JSON.parse(decodedString);
-    } catch (error) {
-      decodedJson = "Invalid JSON file";
-    }
-    const processedLineItems: LineItem[] = [];
-    decodedJson.lineItems.forEach((item: LineItem) => {
-      for (let i = 0; i < item.qty; i++) {
-        processedLineItems.push({
-          descClean: item.descClean,
-          qty: 1,
-          id: processedLineItems.length,
-          lineTotal: item.lineTotal,
+      const decodedString = window.atob(router.query.code as string);
+      console.log(decodedString);
+      const decodedJson = JSON.parse(decodedString);
+      const processedLineItems: LineItem[] = [];
+      decodedJson.lineItems.forEach((item: LineItem) => {
+        for (let i = 0; i < item.qty; i++) {
+          processedLineItems.push({
+            descClean: item.descClean,
+            qty: 1,
+            id: processedLineItems.length,
+            lineTotal: item.lineTotal,
+            newAddition: false,
+            sharers: 0,
+          });
+        }
+      });
+      const processedUsers: User[] = [];
+      for (let i = 0; i < decodedJson.users.length; i++) {
+        processedUsers.push({
+          id: i,
+          name: decodedJson.users[i],
           newAddition: false,
-          sharers: 0,
+          items: [],
         });
       }
-    });
-    const processedUsers: User[] = [];
-    for (let i = 0; i < decodedJson.users.length; i++) {
-      processedUsers.push({
-        id: i,
-        name: decodedJson.users[i],
-        newAddition: false,
-        items: [],
-      });
-    }
-    const processedJson = { ...decodedJson };
-    processedJson.lineItems = processedLineItems;
-    processedJson.users = processedUsers;
+      const processedJson = { ...decodedJson };
+      processedJson.lineItems = processedLineItems;
+      processedJson.users = processedUsers;
 
-    setData(processedJson);
+      setData(processedJson);
+    } catch (error) {
+      setError(true);
+    }
+
     setLoading(false);
   }, [router]);
 
@@ -103,6 +105,7 @@ const useUrlData = () => {
     lineItems: data.lineItems,
     chatId: data.chatId,
     users: data.users,
+    error,
   };
 };
 
