@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
-import Button from "./Forms/Button";
+import Button from "../Forms/Button";
 
 const Landing: FC = ({ children }) => {
   return (

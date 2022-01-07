@@ -1,21 +1,23 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
-import Button from "./Forms/Button";
+import Button from "../Forms/Button";
 
 const Features: FC = ({ children }) => {
   return (
     <div className="space mx-8 overflow-hidden" id="features">
-      <h1 className="text-6xl pt-8 py-4 font-semibold text-center text-white">
-        Features
-      </h1>
-      <p className="text-center text-white text-xl font-light mt-2 mb-16">
-        Product Walkthrough
-      </p>
+      <div className="h-[80vh] lg:h-auto flex flex-col justify-center items-center">
+        <h1 className="text-6xl pt-8 py-4 font-semibold text-center text-white">
+          Features
+        </h1>
+        <p className="text-center text-white text-xl font-light mt-2 mb-16">
+          Product Walkthrough
+        </p>
+      </div>
 
-      <div className="grid grid-cols-3 h-4/5">
+      <div className="grid lg:grid-cols-3 min-h-screen lg:h-auto">
         <div className="flex justify-center items-center h-full">
-          <div className="grid grid-rows-3 h-2/5 w-3/5">
+          <div className="flex flex-col w-full">
             <span className="text-4xl pt-8 font-semibold text-center text-white">
               Data Extraction
             </span>
@@ -25,23 +27,23 @@ const Features: FC = ({ children }) => {
               details and generate the list of the priced items.
             </span>
 
-            <div className="py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
+            <div className="mt-8 transform hover:scale-110 hover:-translate-y-16 transition-all flex justify-center ml-8">
               <br />
               <Fade direction="up">
                 <Image
                   src="/Upload.png"
                   alt="Upload Icon"
                   layout="fixed"
-                  width={250}
-                  height={250}
+                  width={200}
+                  height={200}
                 />
               </Fade>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center items-center h-full">
-          <div className="grid grid-rows-3 h-2/5 w-3/5">
+        <div className="flex justify-center items-center h-full mt-8">
+          <div className="flex flex-col w-full">
             <span className="text-4xl pt-8 font-semibold text-center text-white">
               Expenses Splitting
             </span>
@@ -51,22 +53,22 @@ const Features: FC = ({ children }) => {
               purchases!
             </span>
 
-            <div className=" py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
+            <div className="mt-8 transform hover:scale-110 hover:-translate-y-16 transition-all flex justify-center">
               <Fade direction="up">
                 <Image
                   src="/Bill.png"
                   alt="Bill Icon"
                   layout="fixed"
-                  width={250}
-                  height={250}
+                  width={200}
+                  height={200}
                 />
               </Fade>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center items-center h-full">
-          <div className="grid grid-rows-3 h-2/5 w-3/5">
+        <div className="flex justify-center items-center h-full mt-8">
+          <div className="flex flex-col w-full">
             <span className="text-4xl pt-8 font-semibold text-center text-white">
               Bill Generation
             </span>
@@ -76,14 +78,14 @@ const Features: FC = ({ children }) => {
               via our telegram bot.
             </span>
 
-            <div className="py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
+            <div className="mt-8 transform hover:scale-110 hover:-translate-y-16 transition-all flex justify-center">
               <Fade direction="up">
                 <Image
                   src="/Envelope.png"
                   alt="Upload Icon"
                   layout="fixed"
-                  width={250}
-                  height={250}
+                  width={200}
+                  height={200}
                 />
               </Fade>
             </div>

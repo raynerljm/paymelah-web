@@ -4,12 +4,12 @@ import Head from "next/head";
 //Components
 import MyHead from "../components/MyHead";
 import NavBar from "../components/Layout/Navbar";
-import Landing from "../components/LandingPage";
+import Landing from "../components/HomeSections/LandingPage";
 import Body from "../components/Layout/Body";
 import Border from "../components/Layout/Border";
-import Features from "../components/Features";
-import Telebot from "../components/Telebot";
-import AboutUs from "../components/AboutUs";
+import Features from "../components/HomeSections/Features";
+import Telebot from "../components/HomeSections/Telebot";
+import AboutUs from "../components/HomeSections/AboutUs";
 import TextInput from "../components/Forms/TextInput";
 const Home: NextPage = () => {
   return (
