@@ -68,7 +68,7 @@ const Summary: FC<Props> = ({
           return <UserSummary key={user.id} user={user} />;
         })}
       </div>
-      <div className="flex flex-col items-start">
+      <div className="pt-6 px-2 flex flex-col items-start">
         <Checkbox
           label={`Apply GST (${GST_RATE}%)`}
           checked={applyGst}
@@ -81,24 +81,26 @@ const Summary: FC<Props> = ({
         />
       </div>
 
-      <div className="text-xl text-white mt-8">Payee Details</div>
-      <TextInput value={payeeNumber} update={SetPayeeNumber} />
-      <div className="flex flex-col items-start">
-        <Checkbox
-          label={`Accept PayLah!`}
-          checked={paylah}
-          setChecked={setPaylah}
-        />
-        <Checkbox
-          label={`Accept PayNow`}
-          checked={paynow}
-          setChecked={setPaynow}
-        />
-        <Checkbox
-          label={`Accept Google Pay`}
-          checked={googlepay}
-          setChecked={setGooglepay}
-        />
+      <div className="px-2">
+        <div className="text-xl text-white mt-8 py-1">Payee Details</div>
+        <TextInput value={payeeNumber} update={SetPayeeNumber} />
+        <div className="flex flex-col items-start">
+          <Checkbox
+            label={`Accept PayLah!`}
+            checked={paylah}
+            setChecked={setPaylah}
+          />
+          <Checkbox
+            label={`Accept PayNow`}
+            checked={paynow}
+            setChecked={setPaynow}
+          />
+          <Checkbox
+            label={`Accept Google Pay`}
+            checked={googlepay}
+            setChecked={setGooglepay}
+          />
+        </div>
       </div>
       <div className="flex">
         <button
