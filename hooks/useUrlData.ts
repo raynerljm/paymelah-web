@@ -57,10 +57,11 @@ const useUrlData = () => {
   const [data, setData] = useState<URLData>(emptyData);
 
   useEffect(() => {
-    if (!router) return;
-    const dummyQuery = btoa(JSON.stringify(dummyData));
-    const decodedString = window.atob(dummyQuery as string);
-    // const decodedString = window.atob(router.query.code as string);
+    if (!router || !router.query.code) return;
+    // const dummyQuery = btoa(JSON.stringify(dummyData));
+    // const decodedString = window.atob(dummyQuery as string);
+    const decodedString = window.atob(router.query.code as string);
+    console.log(decodedString);
     let decodedJson;
     try {
       decodedJson = JSON.parse(decodedString);
