@@ -2,12 +2,16 @@ import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import useUrlData from "../../../hooks/useUrlData";
 import { LineItem, User } from "../../../types";
+import { BOT_TOKEN, TELEGRAM_API } from "../../../constants";
+import MyHead from "../../../components/MyHead";
+import Body from "../../../components/Layout/Body";
+import Border from "../../../components/Layout/Border";
+import Navbar from "../../../components/Layout/Navbar";
+import Error from "../../../components/Steps/0-Error";
 import ManageItems from "../../../components/Steps/1-ManageItems";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
-import Error from "../../../components/Steps/0-Error";
 import Summary from "../../../components/Steps/4-Summary";
-import { BOT_TOKEN, TELEGRAM_API } from "../../../constants";
 import Thanks from "../../../components/Steps/5-Thanks";
 
 const Split: NextPage = () => {
@@ -185,54 +189,62 @@ const Split: NextPage = () => {
   if (error) return <Error />;
 
   return (
-    <div className="min-h-screen w-full bg-dark">
-      {step === 1 && (
-        <ManageItems
-          lineItems={lineItems}
-          updateLineItem={updateLineItem}
-          deleteLineItem={deleteLineItem}
-          addLineItem={addLineItem}
-          nextStep={() => setStep(2)}
-        />
-      )}
-      {step === 2 && (
-        <ManageUsers
-          users={users}
-          updateUser={updateUser}
-          deleteUser={deleteUser}
-          addUser={addUser}
-          previousStep={() => setStep(1)}
-          nextStep={() => setStep(3)}
-        />
-      )}
-      {lineItems.map((item, index) => {
-        return (
-          <AllocateItem
-            key={item.id}
-            users={users}
-            item={item}
-            show={step === index + 3}
-            number={index + 1}
-            addItemToUser={addItemToUser}
-            removeItemFromUser={removeItemFromUser}
-            changeLineItemSharers={changeLineItemSharers}
-            updateSharedItemValue={updateSharedItemValue}
-            incrementStep={() => setStep((step) => step + 1)}
-            decrementStep={() => setStep((step) => step - 1)}
-          />
-        );
-      })}
-      {step === 3 + lineItems.length && (
-        <Summary
-          lineItems={lineItems}
-          users={users}
-          decrementStep={() => setStep((step) => step - 1)}
-          incrementStep={() => setStep((step) => step + 1)}
-          confirmSplit={confirmSplit}
-        />
-      )}
-      {step === 4 + lineItems.length && <Thanks />}
-    </div>
+    <>
+      <MyHead />
+      <Body>
+        <Navbar />
+        <Border>
+          <div className="min-h-screen mt-20 w-full bg-dark">
+            {step === 1 && (
+              <ManageItems
+                lineItems={lineItems}
+                updateLineItem={updateLineItem}
+                deleteLineItem={deleteLineItem}
+                addLineItem={addLineItem}
+                nextStep={() => setStep(2)}
+              />
+            )}
+            {step === 2 && (
+              <ManageUsers
+                users={users}
+                updateUser={updateUser}
+                deleteUser={deleteUser}
+                addUser={addUser}
+                previousStep={() => setStep(1)}
+                nextStep={() => setStep(3)}
+              />
+            )}
+            {lineItems.map((item, index) => {
+              return (
+                <AllocateItem
+                  key={item.id}
+                  users={users}
+                  item={item}
+                  show={step === index + 3}
+                  number={index + 1}
+                  addItemToUser={addItemToUser}
+                  removeItemFromUser={removeItemFromUser}
+                  changeLineItemSharers={changeLineItemSharers}
+                  updateSharedItemValue={updateSharedItemValue}
+                  incrementStep={() => setStep((step) => step + 1)}
+                  decrementStep={() => setStep((step) => step - 1)}
+                />
+              );
+            })}
+            {step === 3 + lineItems.length && (
+              <Summary
+                lineItems={lineItems}
+                users={users}
+                decrementStep={() => setStep((step) => step - 1)}
+                incrementStep={() => setStep((step) => step + 1)}
+                confirmSplit={confirmSplit}
+              />
+            )}
+            {step === 4 + lineItems.length && <Thanks />}
+          </div>
+        </Border>
+      </Body>
+    </>
   );
 };
 export default Split;

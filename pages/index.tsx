@@ -3,7 +3,7 @@ import Head from "next/head";
 
 //Components
 import MyHead from "../components/MyHead";
-import NavBar from "../components/Layout/Navbar";
+import Navbar from "../components/Layout/Navbar";
 import Landing from "../components/HomeSections/LandingPage";
 import Body from "../components/Layout/Body";
 import Border from "../components/Layout/Border";
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <MyHead />
       <Body>
-        <NavBar />
+        <Navbar />
         <Border>
           <Landing />
           <Features />
