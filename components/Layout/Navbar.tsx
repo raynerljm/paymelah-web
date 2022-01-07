@@ -59,7 +59,12 @@ const Navbar: FC = () => {
         })}
       </div>
       <div className="hidden sm:block ml-auto">
-        <a href="#github">
+      <a
+                  href="https://github.com/raynerljm/paymelah-web"
+                  target="blank"
+                  rel="noreferrer"
+                >
+
           <BsGithub className="icon" />
         </a>
       </div>

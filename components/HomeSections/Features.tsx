@@ -16,9 +16,9 @@ const Features: FC = ({ children }) => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-3 min-h-screen lg:h-auto">
-        <div className="flex justify-center items-center h-full">
-          <div className="flex flex-col w-full">
+      <div className="grid lg:grid-cols-3  min-h-screen lg:h-auto">
+        <div className="flex justify-center items-center h-full mt-8">
+          <div className="flex flex-col w-4/5">
             <span className="text-4xl pt-8 font-semibold text-center text-white">
               Data Extraction
             </span>
@@ -44,8 +44,8 @@ const Features: FC = ({ children }) => {
         </div>
 
         <div className="flex justify-center items-center h-full mt-8">
-          <div className="flex flex-col w-full">
-            <span className="text-4xl pt-8 font-semibold text-center text-white">
+          <div className="flex flex-col w-4/5">
+            <span className="text-4xl pt-15 font-semibold text-center text-white">
               Expenses Splitting
             </span>
 
@@ -69,9 +69,9 @@ const Features: FC = ({ children }) => {
         </div>
 
         <div className="flex justify-center items-center h-full mt-8">
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-4/5">
             <span className="text-4xl pt-8 font-semibold text-center text-white">
-              Bill Generation
+              Bill Generation 
             </span>
 
             <span className="subtext pt-8 text-center text-white">

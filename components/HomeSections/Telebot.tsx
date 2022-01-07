@@ -30,7 +30,7 @@ const Telebot: FC = ({ children }) => {
             </div>
           </div>
           <div className="flex justify-center items-center h-full mt-8 md:mt-0">
-            <h1 className="text-white text-left text-3xl font-semibold w-full">
+            <h1 className="text-white items-center justify-center text-3xl font-semibold w-full">
               <span className="font-semibold">
                 You can access the telegram bot here.
               </span>
