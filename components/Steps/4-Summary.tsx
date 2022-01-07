@@ -55,7 +55,7 @@ const Summary: FC<Props> = ({
 
   return (
     <>
-      <div className="text-xl text-white">Summary Page</div>
+      <div className="w-full text-center p-2 text-xl text-white">Summary Page</div>
       {unsharedItems && (
         <div className="bg-red-200">
           Note: You still have items that you have not split between users
