@@ -194,7 +194,7 @@ const Split: NextPage = () => {
       <Body>
         <Navbar location="split" />
         <Border>
-          <div className="min-h-screen mt-20 w-full bg-dark">
+          <div className="min-h-screen mt-20 w-full bg-transparent">
             {step === 1 && (
               <ManageItems
                 lineItems={lineItems}

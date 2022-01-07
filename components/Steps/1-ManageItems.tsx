@@ -39,7 +39,7 @@ const ManageItems: FC<Props> = ({
         <LineItemCardAdd addLineItem={addLineItem} />
         <div className="flex">
           <Button
-            className="ml-auto px-10 py-2 ps text-black font-bold max-w-max"
+            className="ml-auto px-10 py-2 text-xl text-black font-bold max-w-max"
             onClick={nextStep}
           >
             Next
