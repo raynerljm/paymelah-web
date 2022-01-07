@@ -17,10 +17,13 @@ const UserCard: FC<Props> = ({ user, updateUser, deleteUser }) => {
     <Card location="user">
       <span>@{user.name}</span>
       <span className="ml-auto flex gap-4">
-        <FaEdit onClick={() => setEditMode(true)} />
+        <FaEdit
+          onClick={() => setEditMode(true)}
+          className="cursor-pointer hover:scale-110 transition-all"
+        />
         <FaTrashAlt
           onClick={() => deleteUser(user.id !== undefined ? user.id : -1)}
-          className="text-red-600"
+          className="text-red-600 cursor-pointer hover:scale-110 transition-all"
         />
       </span>
     </Card>

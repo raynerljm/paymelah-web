@@ -16,9 +16,9 @@ const Checkbox: FC<Props> = ({ label, checked, setChecked }) => {
           setChecked(e.target.checked);
         }}
         id={label}
-        className="text-accent-500"
+        className="text-accent-500 focus-visible:border-accent focus:border-accent cursor-pointer"
       />
-      <label htmlFor={label} className="text-white">
+      <label htmlFor={label} className="text-white cursor-pointer">
         {label}
       </label>
     </div>
