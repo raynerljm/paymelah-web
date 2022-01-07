@@ -17,6 +17,7 @@ const Navbar: FC<Props> = ({ location }) => {
     { title: "Features", href: "#features" },
     { title: "Telebot", href: "#telebot" },
     { title: "About Us", href: "#aboutUs" },
+    { title: "GitHub", href: "#github" },
   ];
 
   return (
@@ -61,11 +62,17 @@ const Navbar: FC<Props> = ({ location }) => {
           </div>
           {/* DESKTOP */}
           <div className="hidden sm:flex flex-grow max-w-3xl justify-evenly">
-            {navItems.map((item) => {
-              return (
-                <NavItem key={item.title} title={item.title} href={item.href} />
-              );
-            })}
+            {navItems
+              .filter((item) => item.title !== "GitHub")
+              .map((item) => {
+                return (
+                  <NavItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  />
+                );
+              })}
           </div>
         </>
       ) : (
