@@ -59,7 +59,9 @@ const Summary: FC<Props> = ({
 
   return (
     <>
-      <div className="text-xl text-white">Summary Page</div>
+      <h1 className="py-2 split-header text-center w-full font-bold text-white">
+        Summary
+      </h1>
       <FeedbackBox
         show={unsharedItems}
         message="Note: You still have items that were not split between anyone"
@@ -69,7 +71,7 @@ const Summary: FC<Props> = ({
           return <UserSummary key={user.id} user={user} />;
         })}
       </div>
-      <div className="flex flex-col items-start">
+      <div className="mt-6 px-2 gap-1 flex flex-col items-start bg-opacity-5 bg-white rounded-lg">
         <Checkbox
           label={`Apply GST (${GST_RATE}%)`}
           checked={applyGst}
@@ -82,24 +84,27 @@ const Summary: FC<Props> = ({
         />
       </div>
 
-      <div className="text-xl text-white mt-8">Payee Details</div>
-      <TextInput value={payeeNumber} update={SetPayeeNumber} />
-      <div className="flex flex-col items-start">
-        <Checkbox
-          label={`Accept PayLah!`}
-          checked={paylah}
-          setChecked={setPaylah}
-        />
-        <Checkbox
-          label={`Accept PayNow`}
-          checked={paynow}
-          setChecked={setPaynow}
-        />
-        <Checkbox
-          label={`Accept Google Pay`}
-          checked={googlepay}
-          setChecked={setGooglepay}
-        />
+      <div className="px-2">
+        <div className="text-xl text-white mt-8 py-1">Payee Details</div>
+        <label className="text-white mb-1">Phone Number:</label>
+        <TextInput value={payeeNumber} update={SetPayeeNumber} />
+        <div className="flex flex-col gap-1 items-start mt-4 bg-opacity-5 bg-white rounded-lg">
+          <Checkbox
+            label={`Accept PayLah!`}
+            checked={paylah}
+            setChecked={setPaylah}
+          />
+          <Checkbox
+            label={`Accept PayNow`}
+            checked={paynow}
+            setChecked={setPaynow}
+          />
+          <Checkbox
+            label={`Accept Google Pay`}
+            checked={googlepay}
+            setChecked={setGooglepay}
+          />
+        </div>
       </div>
       <div className="flex mt-4">
         <Button className="button" onClick={decrementStep}>
