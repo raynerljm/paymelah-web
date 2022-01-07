@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { User } from "../../types";
-import CountUp from "react-countup";
 import AnimatedNumbers from "react-animated-numbers";
 
 type Props = {
