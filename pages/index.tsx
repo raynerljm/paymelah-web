@@ -11,6 +11,7 @@ import Features from "../components/HomeSections/Features";
 import Telebot from "../components/HomeSections/Telebot";
 import AboutUs from "../components/HomeSections/AboutUs";
 import TextInput from "../components/Forms/TextInput";
+import GitHub from "../components/HomeSections/GitHub";
 const Home: NextPage = () => {
   return (
     <>
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
           <Features />
           <Telebot />
           <AboutUs />
+          <GitHub />
         </Border>
       </Body>
     </>
