@@ -9,8 +9,10 @@ const Linkedin: FC = ({ children }) => {
       <div className="grid grid-rows-2 gap-2">
         <br />
         <h1 className="text-white text-center text-5xl font-semibold">
+            <div className="grid px-10 gap-7">
           <div className="flex justify-center items-center">
-            <span className="font-semibold">Our Team </span>
+            <span className="font-semibold">Team LinkedIn </span>
+          </div>
           </div>
         </h1>
         <br />
