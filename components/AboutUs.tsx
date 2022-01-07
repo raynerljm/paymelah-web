@@ -4,7 +4,7 @@ import { AiOutlineLinkedin } from "react-icons/ai";
 
 const Linkedin: FC = ({ children }) => {
   return (
-    <div className="w-full" id="linkedin">
+    <div className="w-full" id="aboutUs">
       {children}
       <div className="grid grid-rows-2 gap-2">
         <br />

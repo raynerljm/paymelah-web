@@ -36,10 +36,10 @@ const Navbar: FC = () => {
       </div>
       <div className="flex flex-grow max-w-3xl justify-evenly">
         <NavItem title={"Home"} href={"#home"} />
-        <NavItem title={"Guide"} href="#guide" />
+        <NavItem title={"Features"} href="#features" />
         <NavItem title={"Telebot"} href="#telebot" />
         <NavItem title={"Platform"} href={"#platform"} />
-        <NavItem title={"About Us"} href={"#about-us"} />
+        <NavItem title={"About Us"} href={"#aboutUs"} />
       </div>
 
       <div className="ml-auto">

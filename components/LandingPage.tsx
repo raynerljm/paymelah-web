@@ -5,7 +5,7 @@ import Button from "../components/Button";
 
 const Landing: FC = ({ children }) => {
   return (
-    <div className="space h-almost mx-7" id="landing">
+    <div className="space h-almost mx-7" id="home">
       <div className=" grid grid-cols-2 h-4/5">
         <div className="flex items-center justify-center h-full">
           <div className="transform hover:scale-110 hover:-translate-y-16 transition-all">

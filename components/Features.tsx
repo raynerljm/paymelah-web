@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
-import Button from "../components/Button";
+import Button from "./Button";
 
-const Guide: FC = ({ children }) => {
+const Features: FC = ({ children }) => {
   return (
-    <div className="space mx-8 overflow-hidden" id="aboutus">
+    <div className="space mx-8 overflow-hidden" id="features">
       <h1 className="text-6xl pt-8 py-4 font-semibold text-center text-white">
         Features
       </h1>
@@ -21,7 +21,7 @@ const Guide: FC = ({ children }) => {
             </span>
 
             <span className="subtext pt-8 text-center text-white">
-              Upload a picture of your receipt and our API will scan the details and generate the list of the priced items.
+              Upload your receipt via our telegram bot and our API will scan the details and generate the list of the priced items.
             </span>
 
             <div className="py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
@@ -94,4 +94,4 @@ const Guide: FC = ({ children }) => {
   );
 };
 
-export default Guide;
+export default Features;
