@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import useUrlData from "../../../hooks/useUrlData";
 import { LineItem, User } from "../../../types";
 import ManageItems from "../../../components/Steps/1-ManageItems";
-import UserCard from "../../../components/UserCard/UserCard";
-import UserCardAdd from "../../../components/UserCard/UserCardAdd";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
 import Error from "../../../components/Steps/0-Error";
 import Summary from "../../../components/Steps/4-Summary";
-import Number from "../../../components/Steps/5-Number";
+import { BOT_TOKEN, TELEGRAM_API } from "../../../constants";
 
 const Split: NextPage = () => {
   const {
@@ -152,6 +150,19 @@ const Split: NextPage = () => {
     acceptedMethods: string[]
   ) => {
     console.log(users, phoneNumber, acceptedMethods);
+    console.log(BOT_TOKEN);
+    console.log(chatId);
+
+    const sendMessageOnBot = async () => {
+      await fetch(`${TELEGRAM_API}/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chat_id: chatId, text: "Hi Amos" }),
+      });
+    };
+    sendMessageOnBot();
   };
 
   if (loading) return <div>Loading...</div>;
