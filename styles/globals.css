@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer components {
   .svg-bg {
     background-color: #000918;
@@ -19,6 +23,6 @@
   }
 
   .subtext {
-      font-size: 18px;
+    font-size: 18px;
   }
 }

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
-import Button from "./Button";
+import Button from "./Forms/Button";
 
 const Features: FC = ({ children }) => {
   return (
@@ -21,11 +21,12 @@ const Features: FC = ({ children }) => {
             </span>
 
             <span className="subtext pt-8 text-center text-white">
-              Upload your receipt via our telegram bot and our API will scan the details and generate the list of the priced items.
+              Upload your receipt via our telegram bot and our API will scan the
+              details and generate the list of the priced items.
             </span>
 
             <div className="py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
-                <br/>
+              <br />
               <Fade direction="up">
                 <Image
                   src="/Upload.png"
@@ -46,7 +47,8 @@ const Features: FC = ({ children }) => {
             </span>
 
             <span className="subtext pt-8 text-center text-white">
-              Easily split the bill with any group of friends based on their purchases!
+              Easily split the bill with any group of friends based on their
+              purchases!
             </span>
 
             <div className=" py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
@@ -70,9 +72,9 @@ const Features: FC = ({ children }) => {
             </span>
 
             <span className="subtext pt-8 text-center text-white">
-              Confirm settlement to send the summarised bill tagged to each user via our telegram bot.
+              Confirm settlement to send the summarised bill tagged to each user
+              via our telegram bot.
             </span>
-            
 
             <div className="py-3 transform hover:scale-110 hover:-translate-y-16 transition-all">
               <Fade direction="up">
