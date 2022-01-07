@@ -23,32 +23,31 @@ const ManageItems: FC<Props> = ({
 }) => {
   return (
     <>
-      <div className="px-10 py-10">
-
-        <h1 className="py-2 split-header text-center w-full font-bold text-white">Receipt Items</h1>
-        <div className="flex flex-col gap-3">
-          {lineItems.map((item) => {
-            return (
-              <LineItemCard
-                key={item.id}
-                item={item}
-                updateLineItem={updateLineItem}
-                deleteLineItem={deleteLineItem}
-              />
-            );
-          })}
-          <LineItemCardAdd addLineItem={addLineItem} />
-          <div className="flex">
-
-            <Button className="ml-auto button"
-              onClick={() => {
-                nextStep();
-                scrollToTop();
-              }}
-            >
-              Next
-            </Button>
-          </div>
+      <h1 className="py-2 split-header text-center w-full font-bold text-white">
+        Receipt Items
+      </h1>
+      <div className="flex flex-col gap-3">
+        {lineItems.map((item) => {
+          return (
+            <LineItemCard
+              key={item.id}
+              item={item}
+              updateLineItem={updateLineItem}
+              deleteLineItem={deleteLineItem}
+            />
+          );
+        })}
+        <LineItemCardAdd addLineItem={addLineItem} />
+        <div className="flex mt-4">
+          <Button
+            className="ml-auto button"
+            onClick={() => {
+              nextStep();
+              scrollToTop();
+            }}
+          >
+            Next
+          </Button>
         </div>
       </div>
     </>

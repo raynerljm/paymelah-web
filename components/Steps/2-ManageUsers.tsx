@@ -42,7 +42,7 @@ const ManageUsers: FC<Props> = ({
           })}
           <UserCardAdd addUser={addUser} />
         </div>
-        <div className="flex">
+        <div className="flex mt-4">
           <Button className="button" onClick={previousStep}>
             Back
           </Button>

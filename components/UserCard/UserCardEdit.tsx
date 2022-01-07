@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import Card from "../Forms/Card";
 import TextInput from "../Forms/TextInput";
-import { FaTimes } from "react-icons/fa";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { User } from "../../types";
 
 type Props = {
@@ -15,16 +15,17 @@ const UserCard: FC<Props> = ({ user, close, updateUser }) => {
 
   return (
     <>
-      <Card>
-        <span>
+      <Card location="user">
+        <span className="flex items-center gap-1">
           @<TextInput value={newUsername} update={setNewUsername} />
         </span>
         <span className="ml-auto">
-          <FaTimes
+          <FaCheck
             onClick={() => {
               updateUser(user.id !== undefined ? user.id : -1, newUsername);
               close();
             }}
+            className="text-green-700"
           />
         </span>
       </Card>

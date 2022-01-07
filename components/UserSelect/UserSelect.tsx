@@ -32,7 +32,7 @@ const UserSelect: FC<Props> = ({
 
   return (
     <>
-      <div>
+      <div className="rounded-lg overflow-hidden">
         {users.map((user) => (
           <UserSelectCheckbox
             key={user.id}
