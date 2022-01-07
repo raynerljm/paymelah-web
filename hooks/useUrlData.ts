@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import type { LineItem, URLData } from "../types";
+import type { LineItem, URLData, User } from "../types";
 
 const emptyData = {
   lineItems: [
@@ -68,8 +68,17 @@ const useUrlData = () => {
         });
       }
     });
+    const processedUsers: User[] = [];
+    for (let i = 0; i < decodedJson.users.length; i++) {
+      processedUsers.push({
+        id: i,
+        name: decodedJson.users[i],
+        newAddition: false,
+      });
+    }
     const processedJson = { ...decodedJson };
     processedJson.lineItems = processedLineItems;
+    processedJson.users = processedUsers;
 
     setData(processedJson);
     setLoading(false);

@@ -6,9 +6,9 @@ import {
   useEffect,
   FormEventHandler,
 } from "react";
-import { LineItem } from "../types";
+import { LineItem } from "../../types";
 import { FaPlusCircle } from "react-icons/fa";
-import TextInput from "./Forms/TextInput";
+import TextInput from "../Forms/TextInput";
 
 type Props = {
   addLineItem: () => void;

@@ -1,7 +1,8 @@
 import { FC, useState } from "react";
-import { LineItem } from "../types";
+import { LineItem } from "../../types";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import EditState from "./LineItemCardEdit";
+import Card from "../Card";
 
 type Props = {
   item: LineItem;
@@ -20,7 +21,7 @@ const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
   const [editMode, setEditMode] = useState(item.newAddition || false);
 
   const NormalState = () => (
-    <div className="bg-slate-300 py-2 px-4 text-xl rounded-lg flex items-center gap-2">
+    <Card>
       <span>
         {item.descClean}
         <br />
@@ -32,7 +33,7 @@ const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
           onClick={() => deleteLineItem(item.id !== undefined ? item.id : -1)}
         />
       </span>
-    </div>
+    </Card>
   );
 
   return (

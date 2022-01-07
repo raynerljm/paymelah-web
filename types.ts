@@ -6,8 +6,14 @@ export type LineItem = {
   newAddition?: boolean;
 };
 
+export type User = {
+  id: number;
+  name: string;
+  newAddition?: boolean;
+};
+
 export type URLData = {
   lineItems: LineItem[];
   chatId: string;
-  users: string[];
+  users: User[];
 };
