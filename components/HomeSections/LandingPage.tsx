@@ -5,7 +5,8 @@ import Button from "../Forms/Button";
 
 const Landing: FC = ({ children }) => {
   return (
-    <div className="pt-[84px] h-screen grid place-items-center mx-7" id="home">
+    <div className="pt-[84px] h-screen grid place-items-center mx-7">
+      <div id="home" className="absolute -top-24"></div>
       <div className="grid md:grid-cols-2 h-4/5">
         <div className="flex items-center justify-center h-full">
           <div className="transform hover:scale-110 hover:-translate-y-16 transition-all">
@@ -50,7 +51,7 @@ const Landing: FC = ({ children }) => {
                 <div className="ml-auto">
                   <Button
                     className="px-10 py-2 bg-white text-black font-bold w-full text-center"
-                    href="platform"
+                    href="telebot"
                   >
                     Get Started
                   </Button>

@@ -5,7 +5,8 @@ import Button from "../Forms/Button";
 
 const Telebot: FC = ({ children }) => {
   return (
-    <div className="space overflow-hidden" id="features">
+    <div className="space overflow-hidden">
+      <div id="telebot" className="relative -top-24"></div>
       <h1 className="text-6xl pt-8 py-4 font-semibold text-center text-white">
         Our Telegram Bot
       </h1>
