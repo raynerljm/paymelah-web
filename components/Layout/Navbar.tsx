@@ -25,7 +25,7 @@ const Navbar: FC<Props> = ({ location }) => {
     >
       <div>
         <Link href="/" passHref>
-          <div className="text-1xl font-black text-white select-nonehover:text-transparent bg-clip-text">
+          <div className="text-1xl font-black text-white select-nonehover:text-transparent bg-clip-text cursor-pointer select-none">
             PlsPayMeLah
           </div>
         </Link>

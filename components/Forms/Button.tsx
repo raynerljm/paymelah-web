@@ -9,7 +9,7 @@ type Props = {
 const Button: FC<Props> = ({ children, className, href, onClick }) => {
   const withoutAnchor: JSX.Element = (
     <div
-      className={`${className} select-none cursor-pointer rounded-md bg-white hover:bg-gradient text-ai-900 hover:text-white`}
+      className={`${className} select-none cursor-pointer rounded-md bg-white hover:bg-gradient`}
       onClick={onClick}
     >
       {children}
