@@ -19,7 +19,7 @@ const LineItemCardAdd: FC<Props> = ({ addLineItem }) => {
     <>
       <div className="flex justify-center my-2">
         <FaPlusCircle
-          className="text-3xl text-slate-300"
+          className="text-3xl pay-green"
           onClick={addLineItem}
         />
       </div>

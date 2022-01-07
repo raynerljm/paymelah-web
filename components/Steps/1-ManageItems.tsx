@@ -3,6 +3,7 @@ import { LineItem } from "../../types";
 import LineItemCard from "../LineItemCard/LineItemCard";
 import LineItemCardAdd from "../LineItemCard/LineItemCardAdd";
 import LineItemCardEdit from "../LineItemCard/LineItemCardEdit";
+import Button from "../../components/Button"
 
 type Props = {
   lineItems: LineItem[];
@@ -21,9 +22,10 @@ const ManageItems: FC<Props> = ({
 }) => {
   return (
     <>
-      <div>
-        <h1 className="text-xl text-white">Please review your items</h1>
-        <div className="flex flex-col gap-2">
+      <div className="px-10 py-10">
+        
+        <h1 className="py-2 split-header text-center w-full font-bold text-white">Receipt Items</h1>
+        <div className="flex flex-col gap-3">
           {lineItems.map((item) => {
             return (
               <LineItemCard
@@ -36,12 +38,14 @@ const ManageItems: FC<Props> = ({
           })}
           <LineItemCardAdd addLineItem={addLineItem} />
           <div className="flex">
-            <button
-              className="bg-slate-300 ml-auto py-2 px-4 text-lg"
-              onClick={nextStep}
-            >
-              Next
-            </button>
+
+          <Button
+                className="ml-auto px-10 py-2 ps text-black font-bold max-w-max"
+                onClick={nextStep}
+              >
+                Next
+              </Button>
+
           </div>
         </div>
       </div>

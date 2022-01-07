@@ -21,4 +21,30 @@
   .subtext {
       font-size: 18px;
   }
+
+  .split-header {
+    font-size : 24px;
+  }
+
+  .pay-green {
+    color: #1A936F
+  }
+
+  .pay-primary {
+    color: #1A936F
+  }
+
+  .pay-secondary {
+    color: #b0413e
+  }
+
+  .pay-primary-light {
+    background-color: #546A7b
+  }
+
+  .item-card {
+    color: #000000;
+    background-color: #F5F5F5;
+  }
+
 }
