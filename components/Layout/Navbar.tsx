@@ -74,7 +74,7 @@ const Navbar: FC<Props> = ({ location }) => {
       <div
         className={`${location === "home" ? "hidden" : ""} sm:block ml-auto`}
       >
-        <a href="#github">
+        <a href="https://github.com/raynerljm/paymelah-web">
           <BsGithub className="icon" />
         </a>
       </div>
