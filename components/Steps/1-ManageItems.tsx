@@ -3,7 +3,7 @@ import { LineItem } from "../../types";
 import LineItemCard from "../LineItemCard/LineItemCard";
 import LineItemCardAdd from "../LineItemCard/LineItemCardAdd";
 import LineItemCardEdit from "../LineItemCard/LineItemCardEdit";
-import Button from "../../components/Button"
+import Button from "../../components/Forms/Button"
 
 type Props = {
   lineItems: LineItem[];
