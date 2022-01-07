@@ -3,6 +3,7 @@ export type LineItem = {
   id?: number;
   descClean: string;
   lineTotal: number;
+  newAddition?: boolean;
 };
 
 export type URLData = {

@@ -64,6 +64,7 @@ const useUrlData = () => {
           qty: 1,
           id: processedLineItems.length,
           lineTotal: item.lineTotal,
+          newAddition: false,
         });
       }
     });

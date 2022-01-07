@@ -5,6 +5,8 @@ import EditState from "./LineItemCardEdit";
 
 type Props = {
   item: LineItem;
+  updateLineItem: (id: number, newDesc: string, newPrice: number) => void;
+  deleteLineItem: (id: number) => void;
 };
 
 const formatter = new Intl.NumberFormat(undefined, {
@@ -14,8 +16,8 @@ const formatter = new Intl.NumberFormat(undefined, {
   maximumFractionDigits: 2,
 });
 
-const LineItemCard: FC<Props> = ({ item }) => {
-  const [editMode, setEditMode] = useState(false);
+const LineItemCard: FC<Props> = ({ item, updateLineItem, deleteLineItem }) => {
+  const [editMode, setEditMode] = useState(item.newAddition || false);
 
   const NormalState = () => (
     <div className="bg-slate-300 py-2 px-4 text-xl rounded-lg flex items-center gap-2">
@@ -26,7 +28,9 @@ const LineItemCard: FC<Props> = ({ item }) => {
       </span>
       <span className="ml-auto flex gap-4">
         <FaEdit onClick={() => setEditMode(true)} />
-        <FaTrashAlt />
+        <FaTrashAlt
+          onClick={() => deleteLineItem(item.id !== undefined ? item.id : -1)}
+        />
       </span>
     </div>
   );
@@ -36,7 +40,11 @@ const LineItemCard: FC<Props> = ({ item }) => {
       {!editMode ? (
         <NormalState />
       ) : (
-        <EditState close={() => setEditMode(false)} />
+        <EditState
+          item={item}
+          close={() => setEditMode(false)}
+          updateLineItem={updateLineItem}
+        />
       )}
     </>
   );
