@@ -8,6 +8,7 @@ import AllocateItem from "../../../components/Steps/3-AllocateItem";
 import Error from "../../../components/Steps/0-Error";
 import Summary from "../../../components/Steps/4-Summary";
 import { BOT_TOKEN, TELEGRAM_API } from "../../../constants";
+import Thanks from "../../../components/Steps/5-Thanks";
 
 const Split: NextPage = () => {
   const {
@@ -153,15 +154,30 @@ const Split: NextPage = () => {
     console.log(BOT_TOKEN);
     console.log(chatId);
 
+    const formattedText = `💸💸💸 Pls Pay Me Lah 💸💸💸\n\n${users
+      .map((user) => {
+        return `🔘 ${user.name} - ${user.items
+          .reduce((acc, item) => acc + item.lineTotal, 0)
+          .toFixed(2)}\n`;
+      })
+      .join("")}\n${
+      acceptedMethods.length > 0
+        ? `ℹ️ Accepted Payment methods:\n${acceptedMethods
+            .map((a) => "• " + a + "\n")
+            .join("")}`
+        : ""
+    }\n${phoneNumber !== null ? `ℹ️ Payee Number:\n• ${phoneNumber}` : ""}`;
+
     const sendMessageOnBot = async () => {
       await fetch(`${TELEGRAM_API}/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ chat_id: chatId, text: "Hi Amos" }),
+        body: JSON.stringify({ chat_id: chatId, text: formattedText }),
       });
     };
+    console.log(formattedText);
     sendMessageOnBot();
   };
 
@@ -211,9 +227,11 @@ const Split: NextPage = () => {
           lineItems={lineItems}
           users={users}
           decrementStep={() => setStep((step) => step - 1)}
+          incrementStep={() => setStep((step) => step + 1)}
           confirmSplit={confirmSplit}
         />
       )}
+      {step === 4 + lineItems.length && <Thanks />}
     </div>
   );
 };

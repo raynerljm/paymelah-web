@@ -10,6 +10,7 @@ type Props = {
   lineItems: LineItem[];
   users: User[];
   decrementStep: () => void;
+  incrementStep: () => void;
   confirmSplit: (
     users: User[],
     phoneNumber: string,
@@ -21,6 +22,7 @@ const Summary: FC<Props> = ({
   lineItems,
   users,
   decrementStep,
+  incrementStep,
   confirmSplit,
 }) => {
   const [applyGst, setApplyGst] = useState(false);
@@ -114,6 +116,7 @@ const Summary: FC<Props> = ({
             if (paynow) acceptedMethods.push("PayNow");
             if (googlepay) acceptedMethods.push("Google Pay");
             confirmSplit(summaryUserData, payeeNumber, acceptedMethods);
+            incrementStep();
           }}
         >
           Confirm

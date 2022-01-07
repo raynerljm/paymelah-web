@@ -5,19 +5,18 @@ import { AiOutlineLinkedin } from "react-icons/ai";
 const Linkedin: FC = ({ children }) => {
   return (
     <div className="w-full" id="aboutUs">
-      {children}
       <div className="grid grid-rows-2 gap-2">
         <br />
         <h1 className="text-white text-center text-5xl font-semibold">
-            <div className="grid px-10 gap-7">
-          <div className="flex justify-center items-center">
-            <span className="font-semibold">Team LinkedIn </span>
-          </div>
+          <div className="grid px-10 gap-7">
+            <div className="flex justify-center items-center">
+              <span className="font-semibold">Team LinkedIn </span>
+            </div>
           </div>
         </h1>
         <br />
         <br />
-        <div className="grid grid-cols-3 px-10 gap-7">
+        <div className="flex flex-col md:grid md:grid-cols-3 px-10 gap-7">
           <div className="flex justify-center items-center">
             <a className="cursor-pointer">
               <div className="hover:scale-110 transform transition-all duration-300">
@@ -32,7 +31,6 @@ const Linkedin: FC = ({ children }) => {
                     alt="image"
                     width={200}
                     height={200}
-
                   />
                 </a>
                 <p className="text-center font-bold text-white text-xl mt-8">
@@ -41,7 +39,6 @@ const Linkedin: FC = ({ children }) => {
               </div>
             </a>
           </div>
-
 
           <div className="flex justify-center items-center">
             <a className="cursor-pointer">
@@ -65,8 +62,7 @@ const Linkedin: FC = ({ children }) => {
                 </p>
               </div>
             </a>
-          </div> 
-
+          </div>
 
           <div className="flex justify-center items-center">
             <a className="cursor-pointer">
