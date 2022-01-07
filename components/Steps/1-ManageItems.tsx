@@ -4,6 +4,7 @@ import LineItemCard from "../LineItemCard/LineItemCard";
 import LineItemCardAdd from "../LineItemCard/LineItemCardAdd";
 import LineItemCardEdit from "../LineItemCard/LineItemCardEdit";
 import Button from "../../components/Forms/Button";
+import { scrollToTop } from "../../functions";
 
 type Props = {
   lineItems: LineItem[];
@@ -39,8 +40,11 @@ const ManageItems: FC<Props> = ({
         <LineItemCardAdd addLineItem={addLineItem} />
         <div className="flex">
           <Button
-            className="ml-auto px-10 py-2 ps text-black font-bold max-w-max"
-            onClick={nextStep}
+            className="ml-auto button"
+            onClick={() => {
+              nextStep();
+              scrollToTop();
+            }}
           >
             Next
           </Button>

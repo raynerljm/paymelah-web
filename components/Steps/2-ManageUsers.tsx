@@ -1,5 +1,7 @@
 import { FC } from "react";
+import { scrollToTop } from "../../functions";
 import { User } from "../../types";
+import Button from "../Forms/Button";
 import UserCard from "../UserCard/UserCard";
 import UserCardAdd from "../UserCard/UserCardAdd";
 import UserCardEdit from "../UserCard/UserCardEdit";
@@ -24,8 +26,8 @@ const ManageUsers: FC<Props> = ({
   return (
     <>
       <div>
-        <h1 className="text-xl text-white">
-          Please add the users splitting the bill
+        <h1 className="py-2 split-header text-center w-full font-bold text-white">
+          Users Splitting
         </h1>
         <div className="flex flex-col gap-2">
           {users.map((user) => {
@@ -41,19 +43,19 @@ const ManageUsers: FC<Props> = ({
           <UserCardAdd addUser={addUser} />
         </div>
         <div className="flex">
-          <button
-            className="bg-slate-300 py-2 px-4 text-lg"
-            onClick={previousStep}
-          >
+          <Button className="button" onClick={previousStep}>
             Back
-          </button>
+          </Button>
 
-          <button
-            className="bg-slate-300 ml-auto py-2 px-4 text-lg"
-            onClick={nextStep}
+          <Button
+            className="button ml-auto"
+            onClick={() => {
+              nextStep();
+              scrollToTop();
+            }}
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </>

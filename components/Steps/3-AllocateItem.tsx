@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { User, LineItem } from "../../types";
+import Button from "../Forms/Button";
 import UserSelect from "../UserSelect/UserSelect";
 
 type Props = {
@@ -31,8 +32,15 @@ const AllocateItem: FC<Props> = ({
     <>
       {show && (
         <div>
-          <h1 className="text-white text-xl">
-            {number}. {item.descClean} ({item.lineTotal}) ({item.sharers})
+          <h1 className="py-2 split-header text-center w-full font-bold text-white">
+            {number}. {item.descClean} (SGD {item.lineTotal.toFixed(2)})
+          </h1>
+          <h1 className="text-white text-4xl w-full text-center">
+            SGD{" "}
+            {(item.lineTotal / (item.sharers !== 0 ? item.sharers : 1)).toFixed(
+              2
+            )}
+            <span className="text-3xl"> per person</span>
           </h1>
           <UserSelect
             users={users}
@@ -43,20 +51,13 @@ const AllocateItem: FC<Props> = ({
             updateSharedItemValue={updateSharedItemValue}
           />
 
-          <div className="flex">
-            <button
-              className="bg-slate-300 py-2 px-4 text-lg"
-              onClick={decrementStep}
-            >
+          <div className="flex mt-4">
+            <Button className="button" onClick={decrementStep}>
               Back
-            </button>
-
-            <button
-              className="bg-slate-300 ml-auto py-2 px-4 text-lg"
-              onClick={incrementStep}
-            >
+            </Button>
+            <Button className="button ml-auto" onClick={incrementStep}>
               Next
-            </button>
+            </Button>
           </div>
         </div>
       )}
