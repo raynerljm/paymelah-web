@@ -26,8 +26,8 @@ const ManageUsers: FC<Props> = ({
   return (
     <>
       <div>
-        <h1 className="text-xl text-white">
-          Please add the users splitting the bill
+        <h1 className="py-2 split-header text-center w-full font-bold text-white">
+          Users Splitting
         </h1>
         <div className="flex flex-col gap-2">
           {users.map((user) => {
