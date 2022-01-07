@@ -14,12 +14,13 @@ const UserCard: FC<Props> = ({ user, updateUser, deleteUser }) => {
   const [editMode, setEditMode] = useState(user.newAddition);
 
   const NormalState = () => (
-    <Card>
+    <Card location="user">
       <span>@{user.name}</span>
       <span className="ml-auto flex gap-4">
         <FaEdit onClick={() => setEditMode(true)} />
         <FaTrashAlt
           onClick={() => deleteUser(user.id !== undefined ? user.id : -1)}
+          className="text-red-600"
         />
       </span>
     </Card>

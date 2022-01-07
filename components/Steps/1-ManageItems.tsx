@@ -38,7 +38,7 @@ const ManageItems: FC<Props> = ({
           );
         })}
         <LineItemCardAdd addLineItem={addLineItem} />
-        <div className="flex">
+        <div className="flex mt-4">
           <Button
             className="ml-auto button"
             onClick={() => {
