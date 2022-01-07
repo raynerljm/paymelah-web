@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <MyHead />
       <Body>
-        <Navbar />
+        <Navbar location="home" />
         <Border>
           <Landing />
           <Features />

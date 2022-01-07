@@ -192,7 +192,7 @@ const Split: NextPage = () => {
     <>
       <MyHead />
       <Body>
-        <Navbar />
+        <Navbar location="split" />
         <Border>
           <div className="min-h-screen mt-20 w-full bg-dark">
             {step === 1 && (

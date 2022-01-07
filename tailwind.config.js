@@ -10,6 +10,9 @@ module.exports = {
       height: {
         "h-almost": "calc(100vh - 84px)",
       },
+      fontFamily: {
+        nunito: "'Nunito Sans', sans-serif",
+      },
       colors: {
         dark: {
           DEFAULT: "#000918",
