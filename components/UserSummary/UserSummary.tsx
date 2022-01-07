@@ -10,7 +10,7 @@ const UserSummary: FC<Props> = ({ user }) => {
 
   return (
     <>
-      <div className="bg-slate-300 py-2 px-4 flex flex-col">
+      <div className="bg-slate-300 rounded-lg mt-2 mx-2 py-2 px-4 flex flex-col">
         <div className="flex font-bold mb-2">
           <span>{user.name}</span>
           <span className="ml-auto">{sumOfItems.toFixed(2)}</span>
