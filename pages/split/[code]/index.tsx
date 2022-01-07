@@ -13,6 +13,7 @@ import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
 import Summary from "../../../components/Steps/4-Summary";
 import Thanks from "../../../components/Steps/5-Thanks";
+import Loading from "../../../components/Steps/0-Loading";
 
 const Split: NextPage = () => {
   const {
@@ -185,7 +186,7 @@ const Split: NextPage = () => {
     sendMessageOnBot();
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <Error />;
 
   return (
