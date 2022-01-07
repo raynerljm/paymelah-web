@@ -57,7 +57,7 @@ const Split: NextPage = () => {
     const previousMaxId = Math.max(...lineItems.map((item) => item.id || 0));
     const newItem: LineItem = {
       id: previousMaxId + 1,
-      descClean: `new_item_${lineItems.length + 1}`,
+      descClean: `New Item ${lineItems.length + 1}`,
       lineTotal: 0,
       qty: 1,
       newAddition: true,
@@ -122,7 +122,7 @@ const Split: NextPage = () => {
     const previousMaxId = Math.max(...users.map((item) => item.id || 0));
     const newUser: User = {
       id: previousMaxId + 1,
-      name: `user_${users.length + 1}`,
+      name: `New User ${users.length + 1}`,
       newAddition: true,
       items: [],
     };
