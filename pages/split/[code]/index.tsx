@@ -82,6 +82,7 @@ const Split: NextPage = () => {
           id,
           name: newName,
           newAddition: false,
+          items: [],
         };
         return newUser;
       }
@@ -96,8 +97,36 @@ const Split: NextPage = () => {
       id: previousMaxId + 1,
       name: `user_${users.length + 1}`,
       newAddition: true,
+      items: [],
     };
     const newUsers = [...users, newUser];
+    setUsers(newUsers);
+  };
+
+  const addItemToUser = (userId: number, item: LineItem) => {
+    const newUsers = users.map((user) => {
+      if (user.id === userId) {
+        const newUser = { ...user };
+        newUser.items.push(item);
+        return newUser;
+      } else {
+        return user;
+      }
+    });
+    setUsers(newUsers);
+  };
+
+  const removeItemFromUser = (userId: number, itemId: number) => {
+    const newUsers = users.map((user) => {
+      if (user.id === userId) {
+        const newUser = { ...user };
+        const newItems = newUser.items.filter((item) => item.id !== itemId);
+        newUser.items = newItems;
+        return newUser;
+      } else {
+        return user;
+      }
+    });
     setUsers(newUsers);
   };
 
@@ -126,8 +155,12 @@ const Split: NextPage = () => {
         return (
           <AllocateItem
             key={item.id}
+            users={users}
             item={item}
             show={step === index + 3}
+            number={index + 1}
+            addItemToUser={addItemToUser}
+            removeItemFromUser={removeItemFromUser}
             incrementStep={() => setStep((step) => step + 1)}
             decrementStep={() => setStep((step) => step - 1)}
           />

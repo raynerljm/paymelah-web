@@ -6,12 +6,21 @@ const emptyData = {
   lineItems: [
     {
       qty: 0,
+      id: 0,
       descClean: "Loading...",
       lineTotal: 0,
+      newAddition: false,
     },
   ],
   chatId: "dummyChatId",
-  users: [],
+  users: [
+    {
+      id: 0,
+      name: "Loading...",
+      newAddition: false,
+      items: [],
+    },
+  ],
 };
 
 const dummyData = {
@@ -74,6 +83,7 @@ const useUrlData = () => {
         id: i,
         name: decodedJson.users[i],
         newAddition: false,
+        items: [],
       });
     }
     const processedJson = { ...decodedJson };
