@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { User, LineItem } from "../../types";
+import Button from "../Forms/Button";
 import UserSelect from "../UserSelect/UserSelect";
 
 type Props = {
@@ -43,20 +44,13 @@ const AllocateItem: FC<Props> = ({
             updateSharedItemValue={updateSharedItemValue}
           />
 
-          <div className="flex">
-            <button
-              className="bg-slate-300 py-2 px-4 text-lg"
-              onClick={decrementStep}
-            >
+          <div className="flex mt-4">
+            <Button className="button" onClick={decrementStep}>
               Back
-            </button>
-
-            <button
-              className="bg-slate-300 ml-auto py-2 px-4 text-lg"
-              onClick={incrementStep}
-            >
+            </Button>
+            <Button className="button ml-auto" onClick={incrementStep}>
               Next
-            </button>
+            </Button>
           </div>
         </div>
       )}

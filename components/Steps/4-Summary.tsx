@@ -4,6 +4,7 @@ import { GST_RATE, SERVICE_RATE } from "../../constants";
 import Checkbox from "../Forms/Checkbox";
 import UserSummary from "../UserSummary/UserSummary";
 import TextInput from "../Forms/TextInput";
+import Button from "../Forms/Button";
 const cloneDeep = require("lodash.clonedeep");
 
 type Props = {
@@ -100,16 +101,13 @@ const Summary: FC<Props> = ({
           setChecked={setGooglepay}
         />
       </div>
-      <div className="flex">
-        <button
-          className="bg-slate-300 py-2 px-4 text-lg"
-          onClick={decrementStep}
-        >
+      <div className="flex mt-4">
+        <Button className="button" onClick={decrementStep}>
           Back
-        </button>
+        </Button>
 
-        <button
-          className="bg-slate-300 ml-auto py-2 px-4 text-lg"
+        <Button
+          className="button ml-auto"
           onClick={() => {
             const acceptedMethods = [];
             if (paylah) acceptedMethods.push("PayLah!");
@@ -120,7 +118,7 @@ const Summary: FC<Props> = ({
           }}
         >
           Confirm
-        </button>
+        </Button>
       </div>
     </>
   );
