@@ -1,7 +1,25 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
+//Components
+import MyHead from "../components/MyHead"
+import NavBar from "../components/Navbar"
+import Landing from "../components/LandingPage"
+import Body from "../components/Body"
+import Border from "../components/Border"
+import Guide from "../components/Guide"
 const Home: NextPage = () => {
-  return <main></main>;
+  return (
+    <>
+    <MyHead/>
+    <Body>
+    <NavBar/>
+    <Border>
+    <Landing/>
+    <Guide/>
+      </Border>
+    </Body>
+    </>
+  );
 };
-
 export default Home;
