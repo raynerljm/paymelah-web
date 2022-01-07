@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import useUrlData from "../../../hooks/useUrlData";
 import { LineItem, User } from "../../../types";
 import ManageItems from "../../../components/Steps/1-ManageItems";
-import UserCard from "../../../components/UserCard/UserCard";
-import UserCardAdd from "../../../components/UserCard/UserCardAdd";
 import ManageUsers from "../../../components/Steps/2-ManageUsers";
 import AllocateItem from "../../../components/Steps/3-AllocateItem";
+import Error from "../../../components/Steps/0-Error";
+import Summary from "../../../components/Steps/4-Summary";
+import { BOT_TOKEN, TELEGRAM_API } from "../../../constants";
 
 const Split: NextPage = () => {
   const {
@@ -14,18 +15,17 @@ const Split: NextPage = () => {
     lineItems: initialLineItems,
     chatId,
     users: initialUsers,
+    error,
   } = useUrlData();
   const [lineItems, setLineItems] = useState<LineItem[]>(initialLineItems);
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [step, setStep] = useState(1);
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || error) return;
     setLineItems(initialLineItems);
     setUsers(initialUsers);
   }, [initialLineItems, initialUsers, loading]);
-
-  if (loading) return <div>Loading...</div>;
 
   const deleteLineItem = (id: number) => {
     if (id === -1) return;
@@ -39,14 +39,8 @@ const Split: NextPage = () => {
     if (id === -1) return;
     const newLineItems = lineItems.map((item) => {
       if (item.id === id) {
-        const newItem = {
-          id,
-          descClean: newDesc,
-          lineTotal: newPrice,
-          qty: 1,
-          newAddition: false,
-        };
-        return newItem;
+        item.descClean = newDesc;
+        item.lineTotal = newPrice;
       }
       return item;
     });
@@ -61,9 +55,42 @@ const Split: NextPage = () => {
       lineTotal: 0,
       qty: 1,
       newAddition: true,
+      sharers: 0,
     };
     const newLineItems = [...lineItems, newItem];
     setLineItems(newLineItems);
+  };
+
+  const changeLineItemSharers = (id: number, action: "+" | "-") => {
+    const newItems = lineItems.map((item) => {
+      if (item.id === id) {
+        if (action === "+") {
+          item.sharers++;
+        } else if (action === "-") {
+          item.sharers--;
+        }
+      }
+      return item;
+    });
+    setLineItems(newItems);
+  };
+
+  const updateSharedItemValue = (id: number) => {
+    const sharedItem = lineItems.filter((item) => item.id === id)[0];
+    const sharers = sharedItem.sharers;
+    const originalPrice = sharedItem.lineTotal;
+    const sharedPrice = originalPrice / sharers;
+    const newUsers: User[] = users.map((user) => {
+      user.items = user.items.map((item) => {
+        if (item.id === id) {
+          item.lineTotal = sharedPrice;
+        }
+        return item;
+      });
+      return user;
+    });
+    console.log(newUsers);
+    setUsers(newUsers);
   };
 
   const deleteUser = (id: number) => {
@@ -78,12 +105,7 @@ const Split: NextPage = () => {
     if (id === -1) return;
     const newUsers = users.map((user) => {
       if (user.id === id) {
-        const newUser: User = {
-          id,
-          name: newName,
-          newAddition: false,
-        };
-        return newUser;
+        user.name = newName;
       }
       return user;
     });
@@ -96,10 +118,55 @@ const Split: NextPage = () => {
       id: previousMaxId + 1,
       name: `user_${users.length + 1}`,
       newAddition: true,
+      items: [],
     };
     const newUsers = [...users, newUser];
     setUsers(newUsers);
   };
+
+  const addItemToUser = (userId: number, item: LineItem) => {
+    const newUsers = users.map((user) => {
+      if (user.id === userId) {
+        user.items.push({ ...item });
+      }
+      return user;
+    });
+    setUsers(newUsers);
+  };
+
+  const removeItemFromUser = (userId: number, itemId: number) => {
+    const newUsers = users.map((user) => {
+      if (user.id === userId) {
+        user.items = user.items.filter((item) => item.id !== itemId);
+      }
+      return user;
+    });
+    setUsers(newUsers);
+  };
+
+  const confirmSplit = (
+    users: User[],
+    phoneNumber: string,
+    acceptedMethods: string[]
+  ) => {
+    console.log(users, phoneNumber, acceptedMethods);
+    console.log(BOT_TOKEN);
+    console.log(chatId);
+
+    const sendMessageOnBot = async () => {
+      await fetch(`${TELEGRAM_API}/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chat_id: chatId, text: "Hi Amos" }),
+      });
+    };
+    sendMessageOnBot();
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <Error />;
 
   return (
     <div className="min-h-screen w-full bg-dark">
@@ -126,13 +193,27 @@ const Split: NextPage = () => {
         return (
           <AllocateItem
             key={item.id}
+            users={users}
             item={item}
             show={step === index + 3}
+            number={index + 1}
+            addItemToUser={addItemToUser}
+            removeItemFromUser={removeItemFromUser}
+            changeLineItemSharers={changeLineItemSharers}
+            updateSharedItemValue={updateSharedItemValue}
             incrementStep={() => setStep((step) => step + 1)}
             decrementStep={() => setStep((step) => step - 1)}
           />
         );
       })}
+      {step === 3 + lineItems.length && (
+        <Summary
+          lineItems={lineItems}
+          users={users}
+          decrementStep={() => setStep((step) => step - 1)}
+          confirmSplit={confirmSplit}
+        />
+      )}
     </div>
   );
 };
