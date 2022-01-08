@@ -64,7 +64,6 @@ const useUrlData = () => {
 
     try {
       const decodedString = window.atob(router.query.code as string);
-      console.log(decodedString);
       const decodedJson = JSON.parse(decodedString);
       const processedLineItems: LineItem[] = [];
       decodedJson.lineItems.forEach((item: LineItem) => {

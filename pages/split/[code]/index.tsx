@@ -96,7 +96,6 @@ const Split: NextPage = () => {
       });
       return user;
     });
-    console.log(newUsers);
     setUsers(newUsers);
   };
 
