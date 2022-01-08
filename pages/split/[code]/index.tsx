@@ -26,6 +26,7 @@ const Split: NextPage = () => {
   const [lineItems, setLineItems] = useState<LineItem[]>(initialLineItems);
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [step, setStep] = useState(1);
+  const [invalidSplit, setInvalidSplit] = useState(false);
 
   useEffect(() => {
     if (loading || error) return;
@@ -155,9 +156,16 @@ const Split: NextPage = () => {
     phoneNumber: string,
     acceptedMethods: string[]
   ) => {
-    console.log(users, phoneNumber, acceptedMethods);
-    console.log(BOT_TOKEN);
-    console.log(chatId);
+    if (
+      users.reduce(
+        (acc, user) =>
+          acc + user.items.reduce((acc, item) => acc + item.lineTotal, 0),
+        0
+      ) === 0
+    ) {
+      setInvalidSplit(true);
+      return;
+    }
 
     const formattedText = `💸💸💸 Pls Pay Me Lah 💸💸💸\n\n${users
       .map((user) => {
@@ -171,7 +179,11 @@ const Split: NextPage = () => {
             .map((a) => "• " + a + "\n")
             .join("")}`
         : ""
-    }\n${phoneNumber !== null ? `ℹ️ Payee Number:\n• ${phoneNumber}` : ""}`;
+    }\n${
+      phoneNumber !== null && phoneNumber !== undefined && phoneNumber !== ""
+        ? `ℹ️ Payee Number:\n• ${phoneNumber}`
+        : ""
+    }`;
 
     const sendMessageOnBot = async () => {
       await fetch(`${TELEGRAM_API}/bot${BOT_TOKEN}/sendMessage`, {
@@ -182,7 +194,6 @@ const Split: NextPage = () => {
         body: JSON.stringify({ chat_id: chatId, text: formattedText }),
       });
     };
-    console.log(formattedText);
     sendMessageOnBot();
   };
 
@@ -238,7 +249,10 @@ const Split: NextPage = () => {
               incrementStep={() => setStep((step) => step + 1)}
               confirmSplit={confirmSplit}
             />
-            <Thanks show={step === 4 + lineItems.length} />
+            <Thanks
+              show={step === 4 + lineItems.length}
+              invalidSplit={invalidSplit}
+            />
           </div>
         </Border>
       </Body>

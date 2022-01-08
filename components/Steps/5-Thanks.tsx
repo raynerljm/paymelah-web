@@ -2,10 +2,11 @@
 import { FC } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
+import Button from "../Forms/Button";
 
-type Props = { show: boolean };
+type Props = { show: boolean; invalidSplit: boolean };
 
-const Thanks: FC<Props> = ({ show }) => {
+const Thanks: FC<Props> = ({ show, invalidSplit }) => {
   return (
     <>
       <Transition
@@ -19,10 +20,22 @@ const Thanks: FC<Props> = ({ show }) => {
           <h1 className="text-center text-2xl font-bold">
             We hope you enjoyed using PayMeLah!
           </h1>
-          <p className="text-lg mt-4 text-center">
-            The PayMeLah Telegram Bot has sent your confirmation details to your
-            chat.
-          </p>
+          {!invalidSplit ? (
+            <p className="text-lg mt-4 text-center">
+              The PayMeLah Telegram Bot has sent your confirmation details to
+              your chat.
+            </p>
+          ) : (
+            <p className="text-lg mt-4 text-center">
+              As no items were split between any of the users, the Telegram Bot
+              will not send a confirmation message. Please try again.
+            </p>
+          )}
+          <Link href="/" passHref>
+            <button className="text-2xl font-bold text-black py-3 px-6 mt-8 select-none cursor-pointer rounded-md bg-white hover:bg-gradient">
+              Home
+            </button>
+          </Link>
         </div>
       </Transition>
     </>

@@ -30,7 +30,7 @@ const UserSelectCheckbox: FC<Props> = ({
     <>
       <div
         className={`${
-          hasItem ? "bg-green-200 shadow-inner" : "bg-white"
+          hasItem ? "bg-green-200 shadow-inner" : "bg-white shadow-inner"
         } py-3 px-5 text-xl flex items-center transition-all cursor-pointer`}
         onClick={() => {
           if (hasItem) {
