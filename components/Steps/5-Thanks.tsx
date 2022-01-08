@@ -1,20 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
-import { Transition } from "@headlessui/react";
+import MyTransition from "../Layout/MyTransition";
 import Link from "next/link";
-import Button from "../Forms/Button";
 
 type Props = { show: boolean; invalidSplit: boolean };
 
 const Thanks: FC<Props> = ({ show, invalidSplit }) => {
   return (
     <>
-      <Transition
-        show={show}
-        enter="transition-opacity duration-150"
-        enterFrom="opacity-40"
-        enterTo="opacity-100"
-      >
+      <MyTransition show={show}>
         <div className="h-[80vh] flex flex-col justify-center items-center text-white mt-20">
           <img src="/thank.png" alt="Empty" className="w-64 h-64" />
           <h1 className="text-center text-2xl font-bold">
@@ -37,7 +31,7 @@ const Thanks: FC<Props> = ({ show, invalidSplit }) => {
             </button>
           </Link>
         </div>
-      </Transition>
+      </MyTransition>
     </>
   );
 };

@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { User, LineItem } from "../../types";
-import { Transition } from "@headlessui/react";
 import Button from "../Forms/Button";
 import UserSelect from "../UserSelect/UserSelect";
+import MyTransition from "../Layout/MyTransition";
 
 type Props = {
   show: boolean;
@@ -31,12 +31,7 @@ const AllocateItem: FC<Props> = ({
 }) => {
   return (
     <>
-      <Transition
-        show={show}
-        enter="transition-opacity duration-150"
-        enterFrom="opacity-40"
-        enterTo="opacity-100"
-      >
+      <MyTransition show={show}>
         <div>
           <h1 className="py-2 split-header text-center w-full text-xl text-white">
             {number}. {item.descClean}
@@ -71,7 +66,7 @@ const AllocateItem: FC<Props> = ({
             </Button>
           </div>
         </div>
-      </Transition>
+      </MyTransition>
     </>
   );
 };

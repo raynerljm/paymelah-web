@@ -2,10 +2,9 @@ import { FC } from "react";
 import { LineItem } from "../../types";
 import LineItemCard from "../LineItemCard/LineItemCard";
 import LineItemCardAdd from "../LineItemCard/LineItemCardAdd";
-import LineItemCardEdit from "../LineItemCard/LineItemCardEdit";
 import Button from "../../components/Forms/Button";
 import { scrollToTop } from "../../functions";
-import { Transition } from "@headlessui/react";
+import MyTransition from "../Layout/MyTransition";
 
 type Props = {
   show: boolean;
@@ -26,12 +25,7 @@ const ManageItems: FC<Props> = ({
 }) => {
   return (
     <>
-      <Transition
-        show={show}
-        enter="transition-opacity duration-150"
-        enterFrom="opacity-40"
-        enterTo="opacity-100"
-      >
+      <MyTransition show={show}>
         <h1 className="py-2 split-header text-center w-full font-bold text-white">
           Receipt Items
         </h1>
@@ -59,7 +53,7 @@ const ManageItems: FC<Props> = ({
             </Button>
           </div>
         </div>
-      </Transition>
+      </MyTransition>
     </>
   );
 };

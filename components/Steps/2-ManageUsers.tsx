@@ -4,7 +4,7 @@ import { User } from "../../types";
 import Button from "../Forms/Button";
 import UserCard from "../UserCard/UserCard";
 import UserCardAdd from "../UserCard/UserCardAdd";
-import { Transition } from "@headlessui/react";
+import MyTransition from "../Layout/MyTransition";
 
 type Props = {
   show: boolean;
@@ -27,12 +27,7 @@ const ManageUsers: FC<Props> = ({
 }) => {
   return (
     <>
-      <Transition
-        show={show}
-        enter="transition-opacity duration-150"
-        enterFrom="opacity-40"
-        enterTo="opacity-100"
-      >
+      <MyTransition show={show}>
         <div>
           <h1 className="py-2 split-header text-center w-full font-bold text-white">
             Users Splitting
@@ -66,7 +61,7 @@ const ManageUsers: FC<Props> = ({
             </Button>
           </div>
         </div>
-      </Transition>
+      </MyTransition>
     </>
   );
 };

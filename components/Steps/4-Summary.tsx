@@ -6,7 +6,7 @@ import UserSummary from "../UserSummary/UserSummary";
 import TextInput from "../Forms/TextInput";
 import Button from "../Forms/Button";
 import FeedbackBox from "../Forms/FeedbackBox";
-import { Transition } from "@headlessui/react";
+import MyTransition from "../Layout/MyTransition";
 const cloneDeep = require("lodash.clonedeep");
 
 type Props = {
@@ -61,12 +61,7 @@ const Summary: FC<Props> = ({
   }, [applyGst, applyService, users]);
 
   return (
-    <Transition
-      show={show}
-      enter="transition-opacity duration-150"
-      enterFrom="opacity-40"
-      enterTo="opacity-100"
-    >
+    <MyTransition show={show}>
       <>
         <h1 className="py-2 split-header text-center w-full font-bold text-white">
           Summary
@@ -132,9 +127,9 @@ const Summary: FC<Props> = ({
           >
             Confirm
           </Button>
-        </div>{" "}
+        </div>
       </>
-    </Transition>
+    </MyTransition>
   );
 };
 export default Summary;
