@@ -7,7 +7,7 @@ type Props = {
 
 const Card: FC<Props> = ({ children, location }) => {
   return (
-    <div className="item-card px-6 py-4 text-lg  font-semibold rounded-xl flex items-center gap-3">
+    <div className="item-card px-6 py-4 text-lg  font-semibold rounded-xl flex items-center gap-3 hover:scale-[1.03] hover:bg-slate-200 transition-all">
       <img
         className="h-30 rounded-lg"
         src={`${
