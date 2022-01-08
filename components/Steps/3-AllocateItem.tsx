@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { User, LineItem } from "../../types";
+import { Transition } from "@headlessui/react";
 import Button from "../Forms/Button";
 import UserSelect from "../UserSelect/UserSelect";
 
@@ -30,7 +31,12 @@ const AllocateItem: FC<Props> = ({
 }) => {
   return (
     <>
-      {show && (
+      <Transition
+        show={show}
+        enter="transition-opacity duration-150"
+        enterFrom="opacity-40"
+        enterTo="opacity-100"
+      >
         <div>
           <h1 className="py-2 split-header text-center w-full text-xl text-white">
             {number}. {item.descClean}
@@ -65,7 +71,7 @@ const AllocateItem: FC<Props> = ({
             </Button>
           </div>
         </div>
-      )}
+      </Transition>
     </>
   );
 };

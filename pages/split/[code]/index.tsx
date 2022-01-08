@@ -196,25 +196,23 @@ const Split: NextPage = () => {
         <Navbar location="split" />
         <Border>
           <div className="min-h-screen mt-20 w-full bg-transparent">
-            {step === 1 && (
-              <ManageItems
-                lineItems={lineItems}
-                updateLineItem={updateLineItem}
-                deleteLineItem={deleteLineItem}
-                addLineItem={addLineItem}
-                nextStep={() => setStep(2)}
-              />
-            )}
-            {step === 2 && (
-              <ManageUsers
-                users={users}
-                updateUser={updateUser}
-                deleteUser={deleteUser}
-                addUser={addUser}
-                previousStep={() => setStep(1)}
-                nextStep={() => setStep(3)}
-              />
-            )}
+            <ManageItems
+              show={step === 1}
+              lineItems={lineItems}
+              updateLineItem={updateLineItem}
+              deleteLineItem={deleteLineItem}
+              addLineItem={addLineItem}
+              nextStep={() => setStep(2)}
+            />
+            <ManageUsers
+              show={step === 2}
+              users={users}
+              updateUser={updateUser}
+              deleteUser={deleteUser}
+              addUser={addUser}
+              previousStep={() => setStep(1)}
+              nextStep={() => setStep(3)}
+            />
             {lineItems.map((item, index) => {
               return (
                 <AllocateItem
@@ -232,16 +230,15 @@ const Split: NextPage = () => {
                 />
               );
             })}
-            {step === 3 + lineItems.length && (
-              <Summary
-                lineItems={lineItems}
-                users={users}
-                decrementStep={() => setStep((step) => step - 1)}
-                incrementStep={() => setStep((step) => step + 1)}
-                confirmSplit={confirmSplit}
-              />
-            )}
-            {step === 4 + lineItems.length && <Thanks />}
+            <Summary
+              show={step === 3 + lineItems.length}
+              lineItems={lineItems}
+              users={users}
+              decrementStep={() => setStep((step) => step - 1)}
+              incrementStep={() => setStep((step) => step + 1)}
+              confirmSplit={confirmSplit}
+            />
+            <Thanks show={step === 4 + lineItems.length} />
           </div>
         </Border>
       </Body>
