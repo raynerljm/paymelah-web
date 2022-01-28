@@ -72,7 +72,7 @@ const useUrlData = () => {
             descClean: item.descClean,
             qty: 1,
             id: processedLineItems.length,
-            lineTotal: item.lineTotal,
+            lineTotal: item.lineTotal / item.qty,
             newAddition: false,
             sharers: 0,
           });
